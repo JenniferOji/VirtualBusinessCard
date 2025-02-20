@@ -10,8 +10,6 @@ function App() {
         <Route path="/profile" element={<Profile />}/>
         <Route path="/signUp" element={<SignUp />}/>
       </Routes>  
-
-      <Profile></Profile> 
       <SignUp></SignUp>   
     </Router>
   );
