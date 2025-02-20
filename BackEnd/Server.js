@@ -38,11 +38,33 @@ app.post('/register', async (req, res) => {
         const newAccount = new AccountModel({ email, password });
         await newAccount.save();
         console.log("Account created successfully")
+        res.status(201).json({ message: "Account created successfully" });
     } catch (error) {
         // outputting the error to the console for better readability 
-        console.error("Error creating account:", error);
+        console.error("Error:", error);
+        res.status(500).json({ message: "Server Error" });
     }
-  });
+});
+
+// retrieving a specifc user by emial and password
+app.post('/login', async (req, res) => {
+    // pulling the email and the password out of the request body 
+    const { email, password } = req.body;
+
+    try {
+        // searching the database for the email and password in the request body and assigning it to account if it exists 
+        const account = await AccountModel.findOne({ email, password }); 
+        // if the account doesnt exist it alerts the user 
+        if (!account) {
+            return res.status(401).json({ message: "Incorrect email or password" });
+        }
+        // if the account exists it allows the user to continue 
+        res.status(200).json({ message: "Log in successful" });
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).json({ message: "Server Error" });
+    }
+});
   
 // the server listening on port 4000
 app.listen(port, () => {

@@ -13,6 +13,7 @@ const Navigation = () => {
                 {/* the routes present on the navigation bar */}
               <Nav.Link href="/SignUp">Sign Up</Nav.Link>
               <Nav.Link href="/Profile">Profile</Nav.Link>
+              <Nav.Link href="/LogIn">Log In</Nav.Link>
             </Nav>
           </Container>
       </Navbar>

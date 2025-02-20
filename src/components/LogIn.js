@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios'; // imported to handle api calls
 import { useNavigate } from 'react-router-dom'; // imported to navigate between routes
 
-const SignUp = () => {
+const LogIn = () => {
   // managing the input values given
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -11,22 +11,22 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault(); 
 
-    await axios.post('http://localhost:4000/register', { email, password })   
-    .then((response) => {
-     // sending a message to the user that the account has been created 
-     alert('Account created successfully!');
-     // redirecting the user to the profile page 
-     navigate('/profile');
-    })
-    .catch((error) => {
-      console.error('Error creating account:', error);
-      alert('Failed to create account');
-    });
+    axios.post('http://localhost:4000/login', { email, password })
+        .then((response) => {
+          alert('Log in successfull!');
+          // redirecting the user to the profile page after a successful login
+          navigate('/profile');
+        })
+        .catch((error) => {
+          console.error('Error logging in:', error);
+          alert('Failed to log in');   
+        });
+    
   };
 
   return (
     <div>
-      <h2>Sign Up</h2>
+      <h2>Log in</h2>
       {/* when the form is submitted the handlesubmit function is triggered */}
       <form onSubmit={handleSubmit}>
         <label>Email:</label><br/>
@@ -49,8 +49,9 @@ const SignUp = () => {
         
         <button type="submit">Submit</button>
       </form>
+      <p>Dont have an account?<a href='SignUp'>Sign Up</a></p>
     </div>
   );
 }
 
-export default SignUp;
+export default LogIn;
