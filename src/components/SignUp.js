@@ -6,17 +6,20 @@ const SignUp = () => {
   // managing the input values given
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const profile = "";
   const navigate = useNavigate(); 
   // handling the submission of the form 
   const handleSubmit = async (e) => {
     e.preventDefault(); 
 
-    await axios.post('http://localhost:4000/register', { email, password })   
+    await axios.post('http://localhost:4000/register', { email, password, profile })   
     .then((response) => {
      // sending a message to the user that the account has been created 
      alert('Account created successfully!');
+     // getting the users id from the resposne 
+     const userId = response.data.id;
      // redirecting the user to the profile page 
-     navigate('/profile');
+     navigate('/profile/' + userId);
     })
     .catch((error) => {
       console.error('Error creating account:', error);

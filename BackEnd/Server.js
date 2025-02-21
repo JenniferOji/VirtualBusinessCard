@@ -24,6 +24,7 @@ mongoose.connect('mongodb+srv://admin:admin@cluster0.sqwxk.mongodb.net/Accounts'
 const accountsSchema = new mongoose.Schema({
     email: String,
     password: String,
+    profile: String
 });
 
 const AccountModel = mongoose.model('Account', accountsSchema);
@@ -31,17 +32,18 @@ const AccountModel = mongoose.model('Account', accountsSchema);
 // handling the post request on register
 app.post('/register', async (req, res) => {
     // pulling the email and password out of the request body 
-    const { email, password } = req.body;
+    const { email, password, profile } = req.body;
   
     try {    
         // creating a new account and saving it to the database model
-        const newAccount = new AccountModel({ email, password });
+        const newAccount = new AccountModel({ email, password, profile });
         await newAccount.save();
         console.log("Account created successfully")
-        res.status(201).json({ message: "Account created successfully" });
+        // creating the account and sending back the users profile id so they can be redirected to the profile page 
+        res.status(201).json({ message: "Account created successfully",  id: newAccount._id   });
     } catch (error) {
         // outputting the error to the console for better readability 
-        console.error("Error:", error);
+        console.error("Error:", error); 
         res.status(500).json({ message: "Server Error" });
     }
 });
@@ -50,6 +52,7 @@ app.post('/register', async (req, res) => {
 app.post('/login', async (req, res) => {
     // pulling the email and the password out of the request body 
     const { email, password } = req.body;
+    
 
     try {
         // searching the database for the email and password in the request body and assigning it to account if it exists 
@@ -58,12 +61,26 @@ app.post('/login', async (req, res) => {
         if (!account) {
             return res.status(401).json({ message: "Incorrect email or password" });
         }
-        // if the account exists it allows the user to continue 
-        res.status(200).json({ message: "Log in successful" });
+        // if the account exists it allows the user to continue - sends back the users profile id so they can be redirected to their profile page 
+        res.status(200).json({ message: "Log in successful", id: account._id  });
     } catch (error) {
         console.error("Error:", error);
         res.status(500).json({ message: "Server Error" });
     }
+});
+
+// loading the profile page on the users id 
+app.get('/profile/:id', async (req, res) => {
+    // when the profile page is loading it retrives tbe users specific id to display their profile  
+    try{
+        //seraching the databse for the account by its id
+        const account = await AccountModel.findById(req.params.id);
+        // sending back the html from the users profile 
+        res.json({ profile: account.profile });
+      } catch (error) {
+        console.error("Error getting profile:", error);
+        res.status(500).json({ message: "Server Error" });
+      }
 });
   
 // the server listening on port 4000

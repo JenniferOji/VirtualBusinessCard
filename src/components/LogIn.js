@@ -14,8 +14,10 @@ const LogIn = () => {
     axios.post('http://localhost:4000/login', { email, password })
         .then((response) => {
           alert('Log in successfull!');
+          // getting the users id from the resposne 
+          const userId = response.data.id;
           // redirecting the user to the profile page after a successful login
-          navigate('/profile');
+          navigate('/profile/' + userId);
         })
         .catch((error) => {
           console.error('Error logging in:', error);
@@ -47,7 +49,7 @@ const LogIn = () => {
             required // making the field required so that the use cannot coniune without filling the field in
           /><br/><br/>
         
-        <button type="submit">Submit</button>
+        <button type="submit">Log in</button>
       </form>
       <p>Dont have an account?<a href='SignUp'>Sign Up</a></p>
     </div>
