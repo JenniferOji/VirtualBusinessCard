@@ -11,8 +11,8 @@ const Navigation = () => {
             <Navbar.Brand href="../App" >Virtual Business Card</Navbar.Brand>
             <Nav className="me-auto">
                 {/* the routes present on the navigation bar */}
-              <Nav.Link href="/Login">Sign Up</Nav.Link>
-              <Nav.Link href="/SignUp">Log In</Nav.Link>
+              <Nav.Link href="/SignUp">Sign Up</Nav.Link>
+              <Nav.Link href="/Login">Log in</Nav.Link>
             </Nav>
           </Container>
       </Navbar>
