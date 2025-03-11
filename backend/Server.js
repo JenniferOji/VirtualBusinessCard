@@ -25,15 +25,31 @@ mongoose.connect(process.env.MONGO_URI)
 
 // creating a scehma in the database for all the newly registered users - the values the schema will hold 
 const accountsSchema = new mongoose.Schema({
-    email: String,
     username: String,
+    email: String,
     password: String,
-    profile: String,
+    create: String,
     qrCode: String 
 });
 
 const AccountModel = mongoose.model('Account', accountsSchema);
 
+app.post('/register', async (req, res) => {
+    // pulling the email and password out of the request body 
+    const { username, email, password, create, qrCode} = req.body;
+  
+    try {    
+        // creating a new account and saving it to the database model
+        const newAccount = new AccountModel({ username, email, password, create, qrCode });
+        await newAccount.save();
+        console.log("Account created successfully")
+        // creating the account and sending back the users profile id so they can be redirected to the profile page 
+        res.status(201).json({ message: "Account created successfully",  id: newAccount._id   });
+    } catch (error) {
+        console.error("Error:", error); 
+        res.status(500).json({ message: "Server Error" });
+    }
+});
 
 app.get("/", (req, res) => {
     res.send("Virtual Business Card running successfully");
