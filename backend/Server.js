@@ -23,6 +23,17 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log(err));
 
+// creating a scehma in the database for all the newly registered users - the values the schema will hold 
+const accountsSchema = new mongoose.Schema({
+    email: String,
+    username: String,
+    password: String,
+    profile: String,
+    qrCode: String 
+});
+
+const AccountModel = mongoose.model('Account', accountsSchema);
+
 
 app.get("/", (req, res) => {
     res.send("Virtual Business Card running successfully");
