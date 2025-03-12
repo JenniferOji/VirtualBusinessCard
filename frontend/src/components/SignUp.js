@@ -18,8 +18,10 @@ const SignUp = () => {
         await axios.post(`${BASE_URL}/register`, { username, email, password, create, qrCode })   
         .then((response) => {
             alert('Account created successfully!');
-            // getting the users id from the resposne to direct them to their personal page 
+            // getting the users id from the resposne to direct them to their personal create page 
             const userId = response.data.id;
+            navigate('/create/' + userId);
+
         })
         .catch((error) => {
             console.error('Error:', error);

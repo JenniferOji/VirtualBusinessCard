@@ -1,16 +1,37 @@
 import React, { useState } from 'react';
 import axios from 'axios'; // imported to handle api calls
 import { useNavigate } from 'react-router-dom'; // imported to navigate between routes
+import { BASE_URL } from '../config';
 
 const Login = () => {
-    // managing the input values given
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+  // managing the input values given
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate(); 
+  // handling the submission of the form 
+  const handleSubmit = async (e) => {
+    e.preventDefault(); 
+
+    axios.post(`${BASE_URL}/login`, { email, password })
+        .then((response) => {
+          alert('Log in successfull!');
+          // getting the users id from the resposne 
+          const userId = response.data.id;
+          // redirecting the user to the create page after a successful login
+          navigate('/create/' + userId);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          alert('Failed to log in');   
+        });
+    
+    };
 
     return (
         <div>
             <h2>Log in</h2>
-            <form >
+            {/* when the form is submitted the handlesubmit function is triggered */}
+            <form onSubmit={handleSubmit}>
                 <label>Email:</label><br/>
                 <input 
                     type="email" 
