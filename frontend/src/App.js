@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
+import Templates from './components/Templates';
+
 import './App.css';
 
 function App() {
@@ -11,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/signUp" element={<SignUp />}/>
         <Route path="/login" element={<Login />}/>
+        <Route path="/templates/:id" element={<Templates />}/>
       </Routes>  
     </Router>
   );

@@ -20,7 +20,7 @@ const SignUp = () => {
             alert('Account created successfully!');
             // getting the users id from the resposne to direct them to their personal create page 
             const userId = response.data.id;
-            navigate('/create/' + userId);
+            navigate('/templates/' + userId);
 
         })
         .catch((error) => {

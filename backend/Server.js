@@ -72,6 +72,12 @@ app.post('/login', async (req, res) => {
     }
 });
 
+// loading the profile page on the users id 
+app.get('/templates/:id', async (req, res) => {
+    
+});
+
+
 app.get("/", (req, res) => {
     res.send("Virtual Business Card running successfully");
 });

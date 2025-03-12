@@ -18,7 +18,7 @@ const Login = () => {
           // getting the users id from the resposne 
           const userId = response.data.id;
           // redirecting the user to the create page after a successful login
-          navigate('/create/' + userId);
+          navigate('/templates/' + userId);
         })
         .catch((error) => {
           console.error('Error:', error);
