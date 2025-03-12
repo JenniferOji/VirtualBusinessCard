@@ -3,6 +3,7 @@ import Navigation from './components/Navigation';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
 import Templates from './components/Templates';
+import Professional from './templates/Professional';
 
 import './App.css';
 
@@ -14,6 +15,7 @@ function App() {
         <Route path="/signUp" element={<SignUp />}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/templates/:id" element={<Templates />}/>
+        <Route path="/templates/professional" element={<Professional />}/>
       </Routes>  
     </Router>
   );
