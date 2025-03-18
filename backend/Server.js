@@ -29,7 +29,11 @@ const accountsSchema = new mongoose.Schema({
     email: String,
     password: String,
     create: String,
-    qrCode: String 
+    qrCode: String,
+    profile: {
+        title: String,
+        description: String
+    }
 });
 
 const AccountModel = mongoose.model('Account', accountsSchema);
@@ -37,11 +41,11 @@ const AccountModel = mongoose.model('Account', accountsSchema);
 // creating the users account
 app.post('/register', async (req, res) => {
     // pulling the email and password out of the request body 
-    const { username, email, password, create, qrCode} = req.body;
+    const { username, email, password, create, qrCode, profile} = req.body;
   
     try {    
         // creating a new account and saving it to the database model
-        const newAccount = new AccountModel({ username, email, password, create, qrCode });
+        const newAccount = new AccountModel({ username, email, password, create, qrCode, profile });
         await newAccount.save();
         console.log("Account created successfully")
         // creating the account and sending back the users profile id so they can be redirected to the profile page 
@@ -71,12 +75,42 @@ app.post('/login', async (req, res) => {
         res.status(500).json({ message: "Server Error" });
     }
 });
-
-// loading the profile page on the users id 
-app.get('/templates/:id', async (req, res) => {
-    
+ 
+// loading current data to the user professional profile page
+app.get('/templates/professional/:id', async (req, res) => {
+    // when the professional page is loading it retrives tbe users specific id to display their profile data
+    try{
+        //seraching the databse for the account by its id
+        const account = await AccountModel.findById(req.params.id);
+        // sending back the users profile data
+        res.json({ profile: account.profile });
+    } catch (error) {
+        console.error("Error getting profile:", error);
+        res.status(500).json({ message: "Server Error" });
+    }
 });
 
+// loading the professional profile page on the users id 
+app.post('/templates/professional/profile/:id', async (req, res) => {
+    const { id } = req.params; 
+    const { profile } = req.body; 
+
+    try {
+        const updatedUserProfile = await AccountModel.findByIdAndUpdate(
+            id, { profile }, // updating the profile field 
+            { new: true, runValidators: true } // returning the updated document
+        );
+
+        if (!updatedUserProfile) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.status(200).json({ message: "Profile updated successfully", user: updatedUserProfile });
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
 
 app.get("/", (req, res) => {
     res.send("Virtual Business Card running successfully");

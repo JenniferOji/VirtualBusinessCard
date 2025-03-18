@@ -10,12 +10,13 @@ const SignUp = () => {
     const [password, setPassword] = useState('');
     const create = "";
     const qrCode = "";
+    const profile = "";
     const navigate = useNavigate(); 
 
     // handling the submission of the form 
     const handleSubmit = async (e) => {
         e.preventDefault(); 
-        await axios.post(`${BASE_URL}/register`, { username, email, password, create, qrCode })   
+        await axios.post(`${BASE_URL}/register`, { username, email, password, create, qrCode, profile })   
         .then((response) => {
             alert('Account created successfully!');
             // getting the users id from the resposne to direct them to their personal create page 

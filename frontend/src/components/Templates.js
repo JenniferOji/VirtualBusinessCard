@@ -1,12 +1,13 @@
 import React from 'react';
 import './Templates.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams} from 'react-router-dom';
 
 const Templates = () => {
+    const { id } = useParams();
     const navigate = useNavigate(); 
     const renderProfessionalTemplate = async (e) => {
         e.preventDefault(); 
-        navigate('/templates/professional');
+        navigate('/templates/professional/' + id);
     };
 
     return (

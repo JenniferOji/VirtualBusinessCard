@@ -16,6 +16,8 @@ function App() {
         <Route path="/login" element={<Login />}/>
         <Route path="/templates/:id" element={<Templates />}/>
         <Route path="/templates/professional" element={<Professional />}/>
+        <Route path="/templates/professional/:id" element={<Professional />}/>
+        <Route path="/templates/professional/profile/:id" element={<Professional />}/>
       </Routes>  
     </Router>
   );
