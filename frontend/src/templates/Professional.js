@@ -38,7 +38,7 @@ const Professional = () => {
     };
 
     const loadPreview = async (e) => {
-        navigate('/professional/preview/' + id);
+        navigate('/professional/portfolio/' + id);
     }
 
     return (
@@ -67,7 +67,7 @@ const Professional = () => {
                 <br />
                 <input type="submit" value="Submit" />
             </form>
-            <button onClick={loadPreview}>Go to preview </button>
+            <button onClick={loadPreview}>View preview </button>
             {/* <img src="/images/template1.png" alt="Profile" style={{ width: "100px" }} /> */}
         </div>
     );

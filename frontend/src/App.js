@@ -4,6 +4,7 @@ import SignUp from './components/SignUp';
 import Login from './components/Login';
 import Templates from './components/Templates';
 import Professional from './templates/Professional';
+import Portfolio from './components/Portfolio';
 
 import './App.css';
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/templates/professional" element={<Professional />}/>
         <Route path="/templates/professional/:id" element={<Professional />}/>
         <Route path="/templates/professional/profile/:id" element={<Professional />}/>
+        <Route path="/professional/portfolio/:id" element={<Portfolio />} />
       </Routes>  
     </Router>
   );
