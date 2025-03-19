@@ -5,9 +5,15 @@ import { useNavigate, useParams} from 'react-router-dom';
 const Templates = () => {
     const { id } = useParams();
     const navigate = useNavigate(); 
+
     const renderProfessionalTemplate = async (e) => {
         e.preventDefault(); 
         navigate('/templates/professional/' + id);
+    };
+
+    const renderDynamicTemplate = async (e) => {
+        e.preventDefault(); 
+        navigate('/templates/dynamic/' + id);
     };
 
     return (
@@ -41,6 +47,16 @@ const Templates = () => {
                         </div>
                         <img src="/images/template1.png" alt="Template1" />
                         <button className="button">Use this template</button> 
+                    </div>
+                </div>
+                <div className="col-md-4">
+                    <div className="card">
+                        <div className="card-content">
+                            <h3>Dynamic</h3>
+                            <p>Create your own</p>
+                        </div>
+                        <img src="/images/template1.png" alt="Template1" />
+                        <button className="button" onClick={renderDynamicTemplate}>Use this template</button> 
                     </div>
                 </div>
             </div>

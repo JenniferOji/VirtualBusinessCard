@@ -7,6 +7,7 @@ import Professional from './templates/Professional';
 import Portfolio from './components/Portfolio';
 
 import './App.css';
+import Dynamic from './templates/Dynamic';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/templates/:id" element={<Templates />}/>
         <Route path="/templates/professional" element={<Professional />}/>
         <Route path="/templates/professional/:id" element={<Professional />}/>
+        <Route path="/templates/dynamic/:id" element={<Dynamic />}/>
         <Route path="/templates/professional/profile/:id" element={<Professional />}/>
         <Route path="/professional/portfolio/:id" element={<Portfolio />} />
       </Routes>  

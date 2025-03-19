@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "react-grid-layout": "^1.5.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.12",
+    "@types/react-dom": "^19.0.4",
+    "typescript": "^5.8.2"
+  }
+}

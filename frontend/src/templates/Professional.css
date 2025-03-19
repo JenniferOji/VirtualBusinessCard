@@ -1,0 +1,13 @@
+.containerForm {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+input, textarea {
+    color: grey; /* Makes the text grey */
+}
+
+.submit {
+    color: black;
+}
