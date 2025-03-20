@@ -23,8 +23,8 @@ const Professional = () => {
 
     const navigate = useNavigate();
 
-     // displaying the users profile when the page is loaded based on their user id 
-     useEffect(() => {
+    // displaying the users profile when the page is loaded based on their user id 
+    useEffect(() => {
         axios.get(`${BASE_URL}/templates/professional/${id}`)
             .then((response) => {
                 setTitle(response.data.profile.title);
