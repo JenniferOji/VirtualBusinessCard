@@ -33,6 +33,10 @@ const accountsSchema = new mongoose.Schema({
     profile: {
         title: String,
         description: String
+    },
+    dynamic: {
+        html: String,
+        css: String
     }
 });
 
@@ -41,11 +45,11 @@ const AccountModel = mongoose.model('Account', accountsSchema);
 // creating the users account
 app.post('/register', async (req, res) => {
     // pulling the email and password out of the request body 
-    const { username, email, password, create, qrCode, profile} = req.body;
+    const { username, email, password, create, qrCode, profile, dynamic} = req.body;
   
     try {    
         // creating a new account and saving it to the database model
-        const newAccount = new AccountModel({ username, email, password, create, qrCode, profile });
+        const newAccount = new AccountModel({ username, email, password, create, qrCode, profile, dynamic });
         await newAccount.save();
         console.log("Account created successfully")
         // creating the account and sending back the users profile id so they can be redirected to the profile page 
@@ -106,6 +110,50 @@ app.post('/templates/professional/profile/:id', async (req, res) => {
         }
 
         res.status(200).json({ message: "Profile updated successfully", user: updatedUserProfile });
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
+// loading the professional profile page on the users id 
+app.post('/templates/professional/profile/:id', async (req, res) => {
+    const { id } = req.params; 
+    const { profile } = req.body; 
+
+    try {
+        const updatedUserProfile = await AccountModel.findByIdAndUpdate(
+            id, { profile }, // updating the profile field 
+            { new: true, runValidators: true } // returning the updated document
+        );
+
+        if (!updatedUserProfile) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.status(200).json({ message: "Profile updated successfully", user: updatedUserProfile });
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
+// saving the format of the dynamic template from the user 
+app.post('/saveTemplate/:id', async (req, res) => {
+    const { id } = req.params; 
+    const {html, css } = req.body; // extracting {html, css}
+
+    try {
+        const updatedUser = await AccountModel.findByIdAndUpdate(
+            id, { dynamic : {html, css}}, // updating the dynamic field in the database 
+            { new: true, runValidators: true } // returning the updated document
+        );
+
+        if (!updatedUser) {
+            return res.status(404).json({ message: "Failed to save" });
+        }
+
+        res.status(200).json({ message: "Saved template", user: updatedUser });
     } catch (error) {
         console.error("Error:", error);
         res.status(500).json({ message: "Server error" });
