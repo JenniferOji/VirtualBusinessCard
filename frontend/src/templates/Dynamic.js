@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import grapesjs from "grapesjs";
-import './Dynamic.scss';
 import gjsPresetWebpage from "grapesjs-preset-webpage";
 import gjsBlocksBasic from "grapesjs-blocks-basic";  
 import axios from 'axios';
 import { BASE_URL } from '../config';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Dynamic = () => {
     const {id} = useParams();
     const [editor, setEditor] = useState(null);
+    const navigate = useNavigate();
+    const look = () => {
+        navigate('/dynamic/portfolio/' + id);
+    }
 
     // inititalising grape.js
     useEffect(() => {
@@ -67,6 +71,7 @@ const Dynamic = () => {
 
     return (
         <div className="App">
+            <button onClick={look}>Preview</button>
             <div id="editor"></div>
         </div>
     );

@@ -7,6 +7,7 @@ import Professional from './templates/Professional';
 import Portfolio from './components/Portfolio';
 import Dynamic from './templates/Dynamic';
 import './App.css';
+import DynamicPortfolio from './Portfolio/DynamicPortfolio';
 
 function App() {
   return (
@@ -26,6 +27,12 @@ function App() {
         
         <Route path="/templates/professional/profile/:id" element={<Professional />}/>
         <Route path="/professional/portfolio/:id" element={<Portfolio />} />
+
+
+        <Route path="/templates/professional/profile/:id" element={<Professional />}/>
+        <Route path="/professional/portfolio/:id" element={<Portfolio />} />
+
+        <Route path="/dynamic/portfolio/:id" element={<DynamicPortfolio />} />
 
       </Routes>  
     </Router>

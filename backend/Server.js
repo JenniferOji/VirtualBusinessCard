@@ -14,8 +14,9 @@ app.use(function(req, res, next) {
 });
 
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json()); 
+app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' })); // increasing the limit the 
+app.use(bodyParser.json({ limit: '10mb' })); // increasing the limit for the json to store images 
+
 
 const mongoose = require('mongoose');
 // connecting to mongoose database with the value in the .env file   
@@ -159,6 +160,26 @@ app.post('/saveTemplate/:id', async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 });
+
+// getting the saved dynamic portfolio data for the user
+app.get('/dynamic/portfolio/:id', async (req, res) => {
+    const { id } = req.params; // getting the id from the url header 
+
+    try {
+        const account = await AccountModel.findById(id);
+        
+        if (!account) {
+            return res.status(404).json({ message: "No portfolio found" });
+        }
+
+        // sending back the html and css from the users account
+        res.status(200).json({ user: { html: account.dynamic.html, css: account.dynamic.css } });
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).json({ message: "Server Error" });
+    }
+});
+
 
 app.get("/", (req, res) => {
     res.send("Virtual Business Card running successfully");
