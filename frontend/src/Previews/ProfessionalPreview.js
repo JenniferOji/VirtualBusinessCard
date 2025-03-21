@@ -36,18 +36,29 @@ const ProfessionalPreview = () => {
     }, [id]);
 
     return (
-        <div className="display">
-            <h2>{title}</h2>
-            <p>{slogan}</p>
-            <h2>Introducing {product}</h2>
-            <p>{description}</p>
-            <h3>features </h3>
-            <p>{feature1}</p>
-            <p>{feature2}</p>
-            <p>{feature3}</p>
-            <h3>contact me</h3>
-            <p>{contact1}</p>
-            <p>{contact2}</p>
+        <div className="phoneContainer">
+            <div className="phoneView">
+                <h2>{title}</h2>
+                <p>{slogan}</p>
+                <hr />
+                <div className='image'>
+                    <img src="/images/template1.png"></img>
+                </div>
+                <hr />
+                <h2>Introducing {product}</h2>
+                <p>{description}</p>
+                <h3>Key Features </h3>
+                <ul> 
+                    <li>{feature1}</li>
+                    <li>{feature2}</li>
+                    <li>{feature3}</li>
+                </ul>
+                <h3>Get in Touch</h3>
+                <ul> 
+                    <li>{contact1}</li>
+                    <li>{contact2}</li>
+                </ul>
+            </div>
         </div>
     );
 }

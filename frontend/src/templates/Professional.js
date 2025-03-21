@@ -26,7 +26,14 @@ const Professional = () => {
         axios.get(`${BASE_URL}/templates/professional/${id}`)
             .then((response) => {
                 setTitle(response.data.profile.title);
+                setSlogan(response.data.profile.slogan);
+                setProduct(response.data.profile.product);
                 setDescription(response.data.profile.description);
+                setFeature1(response.data.profile.feature1);
+                setFeature2(response.data.profile.feature2);
+                setFeature3(response.data.profile.feature3);
+                setContact1(response.data.profile.contact1);
+                setContact2(response.data.profile.contact2);
             })
             .catch((error) => {
             console.log("Error", error);
@@ -45,7 +52,7 @@ const Professional = () => {
             contact1, 
             contact2 }}) // sending the data in the profile object   
         .then((response) => {
-            alert('Saved successfully');  
+            //alert('Saved successfully');  
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -56,9 +63,16 @@ const Professional = () => {
     // updating the users profile on submit
     const handldeFormSubmit = async (e) => {
         e.preventDefault(); 
-        await axios.post(`${BASE_URL}/templates/professional/profile/${id}` , { profile: { title, description }}) // sending the data in the profile object   
+        await axios.post(`${BASE_URL}/templates/professional/profile/${id}` , { profile: { title,  slogan,
+            product,
+            description,  
+            feature1,   
+            feature2,    
+            feature3,    
+            contact1, 
+            contact2 }}) // sending the data in the profile object   
         .then((response) => {
-            alert('Saved successfully');  
+            //alert('Saved successfully');  
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -103,7 +117,7 @@ const Professional = () => {
                 <img src="/images/template1.png" alt="Profile" style={{ width: "100px" }} />
                 <h3> The product description</h3>
                 <textarea 
-                    rows="6" 
+                    rows="4" 
                     cols="50"
                     type="text" 
                     value={description}

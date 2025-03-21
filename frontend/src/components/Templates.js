@@ -57,7 +57,7 @@ const Templates = () => {
                             <h3>Dynamic</h3>
                             <p>Create your own</p>
                         </div>
-                        <img src="/images/template1.png" alt="Template1" />
+                        <img src="/images/template1.png" alt="Template1"/>
                         <button className="button" onClick={renderDynamicTemplate}>Use this template</button> 
                     </div>
                 </div>
