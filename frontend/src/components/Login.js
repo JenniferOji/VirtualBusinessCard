@@ -14,7 +14,7 @@ const Login = () => {
 
     axios.post(`${BASE_URL}/login`, { email, password })
         .then((response) => {
-          alert('Log in successfull!');
+          //alert('Log in successfull!');
           // getting the users id from the resposne 
           const userId = response.data.id;
           // redirecting the user to the create page after a successful login

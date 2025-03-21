@@ -33,7 +33,14 @@ const accountsSchema = new mongoose.Schema({
     qrCode: String,
     profile: {
         title: String,
-        description: String
+        slogan: String,
+        product: String,
+        description: String,        
+        feature1: String,     
+        feature2: String,     
+        feature3: String,     
+        contact1: String,   
+        contact2: String,     
     },
     dynamic: {
         html: String,

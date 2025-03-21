@@ -10,7 +10,10 @@ const SignUp = () => {
     const [password, setPassword] = useState('');
     const create = "";
     const qrCode = "";
-    const profile = { title: "", description: "" };
+    const profile = { title: "", slogan: "",
+                      product: "", description: "",        
+                      feature1: "", feature2: "",     
+                      feature3: "", contact1: "", contact2: "",};
     const dynamic = { html: "", css: "" };    
     const navigate = useNavigate(); 
 

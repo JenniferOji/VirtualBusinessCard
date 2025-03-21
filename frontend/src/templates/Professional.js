@@ -8,22 +8,20 @@ import './Professional.css';
 
 const Professional = () => {
     const {id} = useParams();
-    // Default states if the user does not have a professional profile created yet
-    const [title, setTitle] = useState("Please Enter title");
-    const [slogan, setSlogan] = useState("Please Enter slogan");
-    const [product, setProduct] = useState("Please Enter product name");
-    const [description, setDescription] = useState("Please Enter description");
-    const [feature1, setFeature1] = useState("Please Enter feature");
-    const [feature2, setFeature2] = useState("Please Enter feature");
-    const [feature3, setFeature3] = useState("Please Enter feature");
-    const [contact1, setContact1] = useState("Please Enter contact");
-    const [contact2, setContact2] = useState("Please Enter contact");
-
-
+    // default states if the user does not have a professional profile created yet
+    const [title, setTitle] = useState("Enter business name");
+    const [slogan, setSlogan] = useState("Enter slogan");
+    const [product, setProduct] = useState("Enter product name");
+    const [description, setDescription] = useState("Enter description");
+    const [feature1, setFeature1] = useState("Enter feature");
+    const [feature2, setFeature2] = useState("Enter feature");
+    const [feature3, setFeature3] = useState("Enter feature");
+    const [contact1, setContact1] = useState("Enter contact");
+    const [contact2, setContact2] = useState("Enter contact");
 
     const navigate = useNavigate();
 
-     // displaying the users profile when the page is loaded based on their user id 
+    // displaying the users profile when the page is loaded based on their user id 
     useEffect(() => {
         axios.get(`${BASE_URL}/templates/professional/${id}`)
             .then((response) => {
@@ -36,7 +34,27 @@ const Professional = () => {
     }, [id]);
 
     // updating the users profile on submit
-    const handleSubmit = async (e) => {
+    const handleSave = async (e) => {
+        e.preventDefault(); 
+        await axios.post(`${BASE_URL}/templates/professional/profile/${id}` , { profile: { title, slogan,
+            product,
+            description,  
+            feature1,   
+            feature2,    
+            feature3,    
+            contact1, 
+            contact2 }}) // sending the data in the profile object   
+        .then((response) => {
+            alert('Saved successfully');  
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('Failed to save profile');
+        });
+    };
+
+    // updating the users profile on submit
+    const handldeFormSubmit = async (e) => {
         e.preventDefault(); 
         await axios.post(`${BASE_URL}/templates/professional/profile/${id}` , { profile: { title, description }}) // sending the data in the profile object   
         .then((response) => {
@@ -54,7 +72,9 @@ const Professional = () => {
 
     return (
         <div className="containerForm">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSave}>
+            <h2>Make sure to preview before submitting !</h2>
+
                 <h3>Buisness Name</h3>
                 <input 
                     type="text" 
@@ -69,6 +89,14 @@ const Professional = () => {
                     value={slogan}
                     // updating the value of email on input
                     onChange={(e) => setSlogan(e.target.value)} 
+                    required // making the field required so that the use cannot coniune without filling the field in
+                /><br/><br/>
+                <h3>Enter product name</h3>
+                <input 
+                    type="text" 
+                    value={product}
+                    // updating the value of email on input
+                    onChange={(e) => setProduct(e.target.value)} 
                     required // making the field required so that the use cannot coniune without filling the field in
                 /><br/><br/>
                 <h3>Upload image here</h3>
@@ -142,8 +170,9 @@ const Professional = () => {
                 >  
                 </textarea>
                 <br />
-                <input className="submit" type="submit" value="Submit" />
+                <input className="submit" type="submit" value="Save" />
                 <button onClick={loadPreview}>Preview </button>
+                <button onClick={handldeFormSubmit}>Submit </button>
             </form>
             {/* <img src="/images/template1.png" alt="Profile" style={{ width: "100px" }} /> */}
         </div>

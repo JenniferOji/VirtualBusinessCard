@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { BASE_URL } from '../config';
 import axios from 'axios';
+import './ProfessionalPortfolio.css';
 
-const Portfolio = () => {
+const ProfessionalPortfolio = () => {
     const { id } = useParams();
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -21,12 +22,13 @@ const Portfolio = () => {
     }, [id]);
 
     return (
-        <div>
-            <h1>Portfolio</h1>
-            <h2>{title}</h2>
-            <p>{description}</p>
+        <div className="phoneContainer">
+            <div className="phoneView">
+                <h2>{title}</h2>
+                <p>{description}</p>
+            </div>
         </div>
     );
 }
 
-export default Portfolio;
+export default ProfessionalPortfolio;

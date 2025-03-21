@@ -6,11 +6,13 @@ const Templates = () => {
     const { id } = useParams();
     const navigate = useNavigate(); 
 
+    // naviagting to the page of the professional emplate 
     const renderProfessionalTemplate = async (e) => {
         e.preventDefault(); 
         navigate('/templates/professional/' + id);
     };
 
+    // naviagting to the page of the dynamic template 
     const renderDynamicTemplate = async (e) => {
         e.preventDefault(); 
         navigate('/templates/dynamic/' + id);

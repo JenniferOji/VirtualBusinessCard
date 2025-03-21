@@ -1,0 +1,15 @@
+.phoneContainer {
+    margin-top: 10px;
+}
+
+.phoneView {
+    border-radius: 25px;
+    border: 8px solid #000000;
+    padding: 20px;
+    width: 300px;
+    height: 580px;
+}
+
+.display {
+    margin-top: 10px;
+}

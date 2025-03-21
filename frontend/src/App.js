@@ -4,10 +4,11 @@ import SignUp from './components/SignUp';
 import Login from './components/Login';
 import Templates from './components/Templates';
 import Professional from './templates/Professional';
-import Portfolio from './components/Portfolio';
 import Dynamic from './templates/Dynamic';
 import './App.css';
 import DynamicPortfolio from './Portfolio/DynamicPortfolio';
+import ProfessionalPortfolio from './Portfolio/ProfessionalPortfolio';
+import ProfessionalPreview from './Previews/ProfessionalPreview';
 
 function App() {
   return (
@@ -22,16 +23,11 @@ function App() {
 
         <Route path="/templates/professional" element={<Professional />}/>
         <Route path="/templates/professional/:id" element={<Professional />}/>
-
-        <Route path="/templates/dynamic/:id" element={<Dynamic />}/>
         
         <Route path="/templates/professional/profile/:id" element={<Professional />}/>
-        <Route path="/professional/portfolio/:id" element={<Portfolio />} />
+        <Route path="/professional/portfolio/:id" element={<ProfessionalPreview />} />
 
-
-        <Route path="/templates/professional/profile/:id" element={<Professional />}/>
-        <Route path="/professional/portfolio/:id" element={<Portfolio />} />
-
+        <Route path="/templates/dynamic/:id" element={<Dynamic />}/>
         <Route path="/dynamic/portfolio/:id" element={<DynamicPortfolio />} />
 
       </Routes>  
