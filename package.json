@@ -4,7 +4,9 @@
     "grapesjs-blocks-basic": "^1.0.2",
     "grapesjs-plugin-forms": "^2.0.6",
     "grapesjs-preset-webpage": "^1.0.3",
+    "html-to-image": "^1.11.13",
     "react-grid-layout": "^1.5.1",
+    "react-qr-code": "^2.0.15",
     "sass": "^1.86.0"
   },
   "devDependencies": {

@@ -7,8 +7,9 @@ import Professional from './templates/Professional';
 import Dynamic from './templates/Dynamic';
 import './App.css';
 import DynamicPortfolio from './Portfolio/DynamicPortfolio';
-import ProfessionalPortfolio from './Portfolio/ProfessionalPortfolio';
 import ProfessionalPreview from './Previews/ProfessionalPreview';
+import QrCodeGenerator from './components/QrCodeGenerator';
+import ProfessionalPortfolio from './Portfolio/ProfessionalPortfolio';
 
 function App() {
   return (
@@ -25,10 +26,16 @@ function App() {
         <Route path="/templates/professional/:id" element={<Professional />}/>
         
         <Route path="/templates/professional/profile/:id" element={<Professional />}/>
-        <Route path="/professional/portfolio/:id" element={<ProfessionalPreview />} />
+        <Route path="/professional/portfolio/preview/:id" element={<ProfessionalPreview />} />
 
         <Route path="/templates/dynamic/:id" element={<Dynamic />}/>
         <Route path="/dynamic/portfolio/:id" element={<DynamicPortfolio />} />
+
+        <Route path="/professional/portfolio/QrCode/:id" element={<QrCodeGenerator />} />
+
+        <Route path="/professional/portfolio/:id" element={<ProfessionalPortfolio />} />
+
+
 
       </Routes>  
     </Router>

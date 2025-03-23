@@ -63,6 +63,7 @@ const Professional = () => {
     // updating the users profile on submit
     const handldeFormSubmit = async (e) => {
         e.preventDefault(); 
+        // incase the user forgets to save - sending the users data to the database
         await axios.post(`${BASE_URL}/templates/professional/profile/${id}` , { profile: { title,  slogan,
             product,
             description,  
@@ -72,7 +73,7 @@ const Professional = () => {
             contact1, 
             contact2 }}) // sending the data in the profile object   
         .then((response) => {
-            //alert('Saved successfully');  
+            navigate('/professional/portfolio/QrCode/' + id);
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -81,7 +82,7 @@ const Professional = () => {
     };
 
     const loadPreview = async (e) => {
-        navigate('/professional/portfolio/' + id);
+        navigate('/professional/portfolio/preview/' + id);
     }
 
     return (
@@ -188,7 +189,6 @@ const Professional = () => {
                 <button onClick={loadPreview}>Preview </button>
                 <button onClick={handldeFormSubmit}>Submit </button>
             </form>
-            {/* <img src="/images/template1.png" alt="Profile" style={{ width: "100px" }} /> */}
         </div>
     );
 }

@@ -22,9 +22,9 @@ const DynamicPortfolio = () => {
 
     return (
         <div>
-            {/* Rendering the css from the users dynamic portfolio and applying the styles to the page */}
+            {/* rendering the css from the users dynamic portfolio and applying the styles to the page */}
             <style>{style}</style>
-            {/* Rendering the html from the users dynamic portfolio */}
+            {/* rendering the html from the users dynamic portfolio */}
             <div dangerouslySetInnerHTML={{ __html: portfolio }}></div> 
         </div>
     );
