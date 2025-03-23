@@ -16,26 +16,26 @@ function App() {
     <Router>
       <Navigation />
       <Routes>
+        {/* credentials page */}
         <Route path="/signUp" element={<SignUp />}/>
         <Route path="/login" element={<Login />}/>
 
-        <Route path="/templates" element={<Templates />}/>
+        {/* templates page - dynamic, professional, creative, minimalist*/}
         <Route path="/templates/:id" element={<Templates />}/>
-
-        <Route path="/templates/professional" element={<Professional />}/>
-        <Route path="/templates/professional/:id" element={<Professional />}/>
         
-        <Route path="/templates/professional/profile/:id" element={<Professional />}/>
+        {/* specific templates */}
+        <Route path="/templates/professional/:id" element={<Professional />}/>
+        <Route path="/templates/dynamic/:id" element={<Dynamic />}/>
+
+        {/* 'type' holding the kind of portfolio - dynamic, professional, creative, minimalist */}
+        <Route path="/:type/portfolio/qrCode/:id" element={<QrCodeGenerator />} />
+
+        {/* portfolio previews  */}
         <Route path="/professional/portfolio/preview/:id" element={<ProfessionalPreview />} />
 
-        <Route path="/templates/dynamic/:id" element={<Dynamic />}/>
-        <Route path="/dynamic/portfolio/:id" element={<DynamicPortfolio />} />
-
-        <Route path="/professional/portfolio/QrCode/:id" element={<QrCodeGenerator />} />
-
+        {/* portfolios from qr code scan  */}
         <Route path="/professional/portfolio/:id" element={<ProfessionalPortfolio />} />
-
-
+        <Route path="/dynamic/portfolio/:id" element={<DynamicPortfolio />} />
 
       </Routes>  
     </Router>

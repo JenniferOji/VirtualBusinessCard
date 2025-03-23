@@ -19,6 +19,8 @@ const Professional = () => {
     const [contact1, setContact1] = useState("Enter contact");
     const [contact2, setContact2] = useState("Enter contact");
 
+    const[type] = useState("professional");
+
     const navigate = useNavigate();
 
     // displaying the users profile when the page is loaded based on their user id 
@@ -73,7 +75,9 @@ const Professional = () => {
             contact1, 
             contact2 }}) // sending the data in the profile object   
         .then((response) => {
-            navigate('/professional/portfolio/QrCode/' + id);
+            // navigate('/professional/portfolio/QrCode/' + id);
+            navigate(`/${type}/portfolio/qrCode/${id}`);
+
         })
         .catch((error) => {
             console.error('Error:', error);

@@ -6,8 +6,8 @@ import * as htmlToImage from "html-to-image"; // library to generate images from
 
 // https://dev.to/onlyoneerin/creating-dynamic-qr-codes-using-reactjs-a-step-by-step-tutorial-341a
 function QrCodeGenerator() {
-    const { id } = useParams(); // pulling the id from the url 
-    const [url] = useState(`${BASE_URL}/professional/portfolio/${id}`); // the qr code will be generater from this url 
+    const { id, type } = useParams(); // pulling the id from the url 
+    const [url] = useState(`${BASE_URL}/${type}/portfolio/${id}`); // the qr code will be generater from this url 
     const qrCodeRef = useRef(null);
 
     // function to download the QR code 
