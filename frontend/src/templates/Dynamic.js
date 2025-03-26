@@ -3,7 +3,6 @@ import grapesjs from "grapesjs";
 import gjsPresetWebpage from "grapesjs-preset-webpage";
 import gjsBlocksBasic from "grapesjs-blocks-basic";  
 import axios from 'axios';
-import { BASE_URL } from '../config';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
@@ -58,7 +57,7 @@ const Dynamic = () => {
 
     // handling the saving of the template
     const handleSubmit = async (id, html,css) => {
-        await axios.post(`${BASE_URL}/saveTemplate/${id}`, {html, css})   
+        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/saveTemplate/${id}`, {html, css})   
         .then((response) => {
             alert('Template saved!');  
 

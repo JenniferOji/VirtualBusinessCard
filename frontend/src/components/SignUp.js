@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios'; // imported to handle api calls
-import { BASE_URL } from '../config'; // getting the stored url
 import { useNavigate } from 'react-router-dom'; // imported to navigate between routes
 
 const SignUp = () => {
@@ -20,7 +19,7 @@ const SignUp = () => {
     // handling the submission of the form 
     const handleSubmit = async (e) => {
         e.preventDefault(); 
-        await axios.post(`${BASE_URL}/register`, { username, email, password, create, qrCode, profile, dynamic })   
+        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/register`, { username, email, password, create, qrCode, profile, dynamic })   
         .then((response) => {
             alert('Account created successfully!');
             // getting the users id from the resposne to direct them to their personal create page 
@@ -68,6 +67,7 @@ const SignUp = () => {
             
             <button type="submit">Submit</button>
         </form>
+        <p>Already have an account?<a href='Login'>Login</a></p>
         </div>
     );
 }

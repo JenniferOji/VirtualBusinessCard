@@ -1,13 +1,12 @@
 import React, { useState, useRef } from 'react';
 import QRCode from 'react-qr-code';
-import { BASE_URL } from '../config';
 import { useParams } from 'react-router-dom';
 import * as htmlToImage from "html-to-image"; // library to generate images from HTML elements 
 
 // https://dev.to/onlyoneerin/creating-dynamic-qr-codes-using-reactjs-a-step-by-step-tutorial-341a
 function QrCodeGenerator() {
     const { id, type } = useParams(); // pulling the id from the url 
-    const [url] = useState(`${BASE_URL}/${type}/portfolio/${id}`); // the qr code will be generater from this url 
+    const [url] = useState(`${process.env.REACT_APP_BACKEND_URL}/${type}/portfolio/${id}`); // the qr code will be generater from this url 
     const qrCodeRef = useRef(null);
 
     // function to download the QR code 

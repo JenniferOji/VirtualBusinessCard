@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState, useEffect} from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { BASE_URL } from '../config';
 import axios from 'axios';
 import './Professional.css';
 
@@ -25,7 +24,7 @@ const Professional = () => {
 
     // displaying the users profile when the page is loaded based on their user id 
     useEffect(() => {
-        axios.get(`${BASE_URL}/templates/professional/${id}`)
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/templates/professional/${id}`)
             .then((response) => {
                 setTitle(response.data.profile.title);
                 setSlogan(response.data.profile.slogan);
@@ -45,7 +44,7 @@ const Professional = () => {
     // updating the users profile on submit
     const handleSave = async (e) => {
         e.preventDefault(); 
-        await axios.post(`${BASE_URL}/templates/professional/profile/${id}` , { profile: { title, slogan,
+        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/templates/professional/profile/${id}` , { profile: { title, slogan,
             product,
             description,  
             feature1,   
@@ -66,7 +65,7 @@ const Professional = () => {
     const handldeFormSubmit = async (e) => {
         e.preventDefault(); 
         // incase the user forgets to save - sending the users data to the database
-        await axios.post(`${BASE_URL}/templates/professional/profile/${id}` , { profile: { title,  slogan,
+        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/templates/professional/profile/${id}` , { profile: { title,  slogan,
             product,
             description,  
             feature1,   
@@ -92,106 +91,115 @@ const Professional = () => {
     return (
         <div className="containerForm">
             <form onSubmit={handleSave}>
-            <h2>Make sure to preview before submitting !</h2>
+                <h2 className='header'> Business Portfolio </h2>
+                <div className='form'>
+                    <h3>Buisness Name</h3>
+                    <input 
+                        type="text" 
+                        value={title}
+                        // updating the value of email on input
+                        onChange={(e) => setTitle(e.target.value)} 
+                        required // making the field required so that the use cannot coniune without filling the field in
+                    />
+                </div>
+                <div className='form'>
+                    <h3>Enter slogan</h3>
+                    <input 
+                        type="text" 
+                        value={slogan}
+                        // updating the value of email on input
+                        onChange={(e) => setSlogan(e.target.value)} 
+                        required // making the field required so that the use cannot coniune without filling the field in
+                    />
+                </div>
+                <div className='form'>
+                    <h3>Enter product name</h3>
+                    <input 
+                        type="text" 
+                        value={product}
+                        // updating the value of email on input
+                        onChange={(e) => setProduct(e.target.value)} 
+                        required // making the field required so that the use cannot coniune without filling the field in
+                    />
+                </div>
+                <div className='form'>
+                    <h3>Upload image here</h3>
+                    <img src="/images/template1.png" alt="Profile" style={{ width: "100px" }} />
+                    <h3> The product description</h3>
+                    <textarea 
+                        rows="4" 
+                        type="text" 
+                        value={description}
+                        // updating the value of description on input
+                        onChange={(e) => setDescription(e.target.value)} 
+                        required // mak
+                    >  
+                    </textarea>
+                </div>
+                <div className='form'>
 
-                <h3>Buisness Name</h3>
-                <input 
-                    type="text" 
-                    value={title}
-                    // updating the value of email on input
-                    onChange={(e) => setTitle(e.target.value)} 
-                    required // making the field required so that the use cannot coniune without filling the field in
-                /><br/><br/>
-                <h3>Enter slogan</h3>
-                <input 
-                    type="text" 
-                    value={slogan}
-                    // updating the value of email on input
-                    onChange={(e) => setSlogan(e.target.value)} 
-                    required // making the field required so that the use cannot coniune without filling the field in
-                /><br/><br/>
-                <h3>Enter product name</h3>
-                <input 
-                    type="text" 
-                    value={product}
-                    // updating the value of email on input
-                    onChange={(e) => setProduct(e.target.value)} 
-                    required // making the field required so that the use cannot coniune without filling the field in
-                /><br/><br/>
-                <h3>Upload image here</h3>
-                <img src="/images/template1.png" alt="Profile" style={{ width: "100px" }} />
-                <h3> The product description</h3>
-                <textarea 
-                    rows="4" 
-                    cols="50"
-                    type="text" 
-                    value={description}
-                    // updating the value of description on input
-                    onChange={(e) => setDescription(e.target.value)} 
-                    required // mak
-                >  
-                </textarea>
-                <br />
-                <h3>Enter products features </h3>
-                <textarea 
-                    rows="2" 
-                    cols="50"
-                    type="text" 
-                    value={feature1}
-                    // updating the value of description on input
-                    onChange={(e) => setFeature1(e.target.value)} 
-                    required // mak
-                >  
-                </textarea>
-                <br />
-                <textarea 
-                    rows="2" 
-                    cols="50"
-                    type="text" 
-                    value={feature2}
-                    // updating the value of description on input
-                    onChange={(e) => setFeature2(e.target.value)} 
-                    required // mak
-                >  
-                </textarea>
-                <br />
-                <textarea 
-                    rows="2" 
-                    cols="50"
-                    type="text" 
-                    value={feature3}
-                    // updating the value of description on input
-                    onChange={(e) => setFeature3(e.target.value)} 
-                    required // mak
-                >  
-                </textarea>
-                <br />
-                <h3>Enter your contacts</h3>
-                <textarea 
-                    rows="2" 
-                    cols="50"
-                    type="text" 
-                    value={contact1}
-                    // updating the value of description on input
-                    onChange={(e) => setContact1(e.target.value)} 
-                    required // mak
-                >  
-                </textarea>
-                <br />
-                <textarea 
-                    rows="2" 
-                    cols="50"
-                    type="text" 
-                    value={contact2}
-                    // updating the value of description on input
-                    onChange={(e) => setContact2(e.target.value)} 
-                    required // mak
-                >  
-                </textarea>
-                <br />
-                <input className="submit" type="submit" value="Save" />
-                <button onClick={loadPreview}>Preview </button>
-                <button onClick={handldeFormSubmit}>Submit </button>
+                    <h3>Enter products features </h3>
+                    <textarea 
+                        rows="2" 
+                        type="text" 
+                        value={feature1}
+                        // updating the value of description on input
+                        onChange={(e) => setFeature1(e.target.value)} 
+                        required // mak
+                    >  
+                    </textarea>
+                </div>
+                <div className='form'>
+                    <textarea 
+                        rows="2" 
+                        type="text" 
+                        value={feature2}
+                        // updating the value of description on input
+                        onChange={(e) => setFeature2(e.target.value)} 
+                        required // mak
+                    >  
+                    </textarea>
+                </div>
+                <div className='form'>
+                    <textarea 
+                        rows="2" 
+                        type="text" 
+                        value={feature3}
+                        // updating the value of description on input
+                        onChange={(e) => setFeature3(e.target.value)} 
+                        required // mak
+                    >  
+                    </textarea>
+                </div>
+                <div className='form'>
+
+                    <h3>Enter your contacts</h3>
+                    <textarea 
+                        rows="2" 
+                        type="text" 
+                        value={contact1}
+                        // updating the value of description on input
+                        onChange={(e) => setContact1(e.target.value)} 
+                        required // mak
+                    >  
+                    </textarea>
+                </div>
+                <div className='form'>
+                    <textarea 
+                        rows="2" 
+                        type="text" 
+                        value={contact2}
+                        // updating the value of description on input
+                        onChange={(e) => setContact2(e.target.value)} 
+                        required // mak
+                    >  
+                    </textarea>
+                </div>
+                <div className='form-buttons'>
+                    <button className="save" type="submit">Save</button>
+                    <button onClick={loadPreview} className='preview'>Preview </button>
+                    <button onClick={handldeFormSubmit} className='submit'>Submit </button>
+                </div>
             </form>
         </div>
     );

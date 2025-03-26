@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { BASE_URL } from '../config';
 import axios from 'axios';
 import './ProfessionalPreview.css';
 
@@ -18,7 +17,7 @@ const ProfessionalPreview = () => {
     
     // getting the portfolio data when the page loads 
     useEffect(() => {
-        axios.get(`${BASE_URL}/templates/professional/${id}`)
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/templates/professional/${id}`)
             .then((response) => {
                 setTitle(response.data.profile.title);
                 setSlogan(response.data.profile.slogan);

@@ -4,14 +4,16 @@ const app = express();
 const port = process.env.PORT;
 
 const cors = require('cors');
-app.use(cors());
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+app.use(
+    cors({
+      origin: ["http://localhost:3000"],
+      credentials: true, 
+      methods: "GET,POST,PUT,DELETE,OPTIONS",
+      allowedHeaders: "Content-Type,Authorization",
+    })
+  );
+  
+app.options("*", cors());
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' })); // increasing the limit the 
@@ -51,7 +53,7 @@ const accountsSchema = new mongoose.Schema({
 const AccountModel = mongoose.model('Account', accountsSchema);
 
 // creating the users account
-app.post('/register', async (req, res) => {
+app.post('/api/register', async (req, res) => {
     // pulling the email and password out of the request body 
     const { username, email, password, create, qrCode, profile, dynamic} = req.body;
   
@@ -69,7 +71,7 @@ app.post('/register', async (req, res) => {
 });
 
 // retrieving a specifc user by email and password
-app.post('/login', async (req, res) => {
+app.post('/api/login', async (req, res) => {
     // pulling the email and the password out of the request body 
     const { email, password } = req.body;
     
@@ -89,7 +91,7 @@ app.post('/login', async (req, res) => {
 });
  
 // loading current data to the user professional profile page
-app.get('/templates/professional/:id', async (req, res) => {
+app.get('/api/templates/professional/:id', async (req, res) => {
     // when the professional page is loading it retrives tbe users specific id to display their profile data
     try{
         //seraching the databse for the account by its id
@@ -103,7 +105,7 @@ app.get('/templates/professional/:id', async (req, res) => {
 });
 
 // loading the professional profile page on the users id 
-app.post('/templates/professional/profile/:id', async (req, res) => {
+app.post('/api/templates/professional/profile/:id', async (req, res) => {
     const { id } = req.params; 
     const { profile } = req.body; 
 
@@ -125,7 +127,7 @@ app.post('/templates/professional/profile/:id', async (req, res) => {
 });
 
 // loading the professional profile page on the users id 
-app.post('/templates/professional/profile/:id', async (req, res) => {
+app.post('/api/templates/professional/profile/:id', async (req, res) => {
     const { id } = req.params; 
     const { profile } = req.body; 
 
@@ -147,7 +149,7 @@ app.post('/templates/professional/profile/:id', async (req, res) => {
 });
 
 // saving the format of the dynamic template from the user 
-app.post('/saveTemplate/:id', async (req, res) => {
+app.post('api//saveTemplate/:id', async (req, res) => {
     const { id } = req.params; 
     const {html, css } = req.body; // extracting {html, css}
 
@@ -169,7 +171,7 @@ app.post('/saveTemplate/:id', async (req, res) => {
 });
 
 // getting the saved dynamic portfolio data for the user
-app.get('/dynamic/portfolio/:id', async (req, res) => {
+app.get('/api/dynamic/portfolio/:id', async (req, res) => {
     const { id } = req.params; // getting the id from the url header 
 
     try {
@@ -188,10 +190,12 @@ app.get('/dynamic/portfolio/:id', async (req, res) => {
 });
 
 
-app.get("/", (req, res) => {
+app.get("/api/", (req, res) => {
     res.send("Virtual Business Card running successfully");
 });
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
+
+module.exports = app;

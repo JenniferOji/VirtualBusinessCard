@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios'; // imported to handle api calls
 import { useNavigate } from 'react-router-dom'; // imported to navigate between routes
-import { BASE_URL } from '../config';
 
 const Login = () => {
+
   // managing the input values given
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -12,7 +12,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault(); 
 
-    axios.post(`${BASE_URL}/login`, { email, password })
+    axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/login`, { email, password })
         .then((response) => {
           //alert('Log in successfull!');
           // getting the users id from the resposne 

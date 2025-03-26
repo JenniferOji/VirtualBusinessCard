@@ -10,34 +10,39 @@ import DynamicPortfolio from './Portfolio/DynamicPortfolio';
 import ProfessionalPreview from './Previews/ProfessionalPreview';
 import QrCodeGenerator from './components/QrCodeGenerator';
 import ProfessionalPortfolio from './Portfolio/ProfessionalPortfolio';
+import Footer from './components/Footer.js';
 
 function App() {
   return (
     <Router>
-      <Navigation />
-      <Routes>
-        {/* credentials page */}
-        <Route path="/signUp" element={<SignUp />}/>
-        <Route path="/login" element={<Login />}/>
+      <div className="app-container">
+        <Navigation />
+        <div className="main-content">
+          <Routes>
+            {/* credentials page */}
+            <Route path="/signUp" element={<SignUp />}/>
+            <Route path="/login" element={<Login />}/>
 
-        {/* templates page - dynamic, professional, creative, minimalist*/}
-        <Route path="/templates/:id" element={<Templates />}/>
-        
-        {/* specific templates */}
-        <Route path="/templates/professional/:id" element={<Professional />}/>
-        <Route path="/templates/dynamic/:id" element={<Dynamic />}/>
+            {/* templates page - dynamic, professional, creative, minimalist */}
+            <Route path="/templates/:id" element={<Templates />}/>
 
-        {/* 'type' holding the kind of portfolio - dynamic, professional, creative, minimalist */}
-        <Route path="/:type/portfolio/qrCode/:id" element={<QrCodeGenerator />} />
+            {/* specific templates */}
+            <Route path="/templates/professional/:id" element={<Professional />}/>
+            <Route path="/templates/dynamic/:id" element={<Dynamic />}/>
 
-        {/* portfolio previews  */}
-        <Route path="/professional/portfolio/preview/:id" element={<ProfessionalPreview />} />
+            {/* 'type' holding the kind of portfolio - dynamic, professional, creative, minimalist */}
+            <Route path="/:type/portfolio/qrCode/:id" element={<QrCodeGenerator />} />
 
-        {/* portfolios from qr code scan  */}
-        <Route path="/professional/portfolio/:id" element={<ProfessionalPortfolio />} />
-        <Route path="/dynamic/portfolio/:id" element={<DynamicPortfolio />} />
+            {/* portfolio previews  */}
+            <Route path="/professional/portfolio/preview/:id" element={<ProfessionalPreview />} />
 
-      </Routes>  
+            {/* portfolios from qr code scan  */}
+            <Route path="/professional/portfolio/:id" element={<ProfessionalPortfolio />} />
+            <Route path="/dynamic/portfolio/:id" element={<DynamicPortfolio />} />
+          </Routes>  
+        </div>
+        <Footer />
+      </div>
     </Router>
   );
 }

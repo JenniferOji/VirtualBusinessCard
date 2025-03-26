@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { BASE_URL } from '../config';
 import axios from 'axios';
 
 const DynamicPortfolio = () => {
@@ -10,7 +9,7 @@ const DynamicPortfolio = () => {
 
     // getting the users portfolio data when the page is loaded to display it 
     useEffect(() => {
-        axios.get(`${BASE_URL}/dynamic/portfolio/${id}`)
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/dynamic/portfolio/${id}`)
             .then((response) => {
                 setPortfolio(response.data.user.html); // setting the html from the response
                 setStyle(response.data.user.css); // setting the css from the response 
