@@ -24,7 +24,7 @@ const Professional = () => {
 
     // displaying the users profile when the page is loaded based on their user id 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/templates/professional/${id}`)
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/templates/professional/${id}`)
             .then((response) => {
                 setTitle(response.data.profile.title);
                 setSlogan(response.data.profile.slogan);
@@ -44,7 +44,7 @@ const Professional = () => {
     // updating the users profile on submit
     const handleSave = async (e) => {
         e.preventDefault(); 
-        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/templates/professional/profile/${id}` , { profile: { title, slogan,
+        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/templates/professional/profile/${id}` , { profile: { title, slogan,
             product,
             description,  
             feature1,   
@@ -65,7 +65,7 @@ const Professional = () => {
     const handldeFormSubmit = async (e) => {
         e.preventDefault(); 
         // incase the user forgets to save - sending the users data to the database
-        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/templates/professional/profile/${id}` , { profile: { title,  slogan,
+        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/templates/professional/profile/${id}` , { profile: { title,  slogan,
             product,
             description,  
             feature1,   

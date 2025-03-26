@@ -12,7 +12,11 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault(); 
 
-    axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/login`, { email, password })
+    axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, { email, password }, {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
         .then((response) => {
           //alert('Log in successfull!');
           // getting the users id from the resposne 

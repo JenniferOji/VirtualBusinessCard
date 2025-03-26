@@ -19,7 +19,7 @@ const SignUp = () => {
     // handling the submission of the form 
     const handleSubmit = async (e) => {
         e.preventDefault(); 
-        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/register`, { username, email, password, create, qrCode, profile, dynamic })   
+        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/register`, { username, email, password, create, qrCode, profile, dynamic })   
         .then((response) => {
             alert('Account created successfully!');
             // getting the users id from the resposne to direct them to their personal create page 

@@ -6,7 +6,12 @@ import * as htmlToImage from "html-to-image"; // library to generate images from
 // https://dev.to/onlyoneerin/creating-dynamic-qr-codes-using-reactjs-a-step-by-step-tutorial-341a
 function QrCodeGenerator() {
     const { id, type } = useParams(); // pulling the id from the url 
-    const [url] = useState(`${process.env.REACT_APP_BACKEND_URL}/${type}/portfolio/${id}`); // the qr code will be generater from this url 
+    const baseUrl = window.location.origin;
+    console.log(baseUrl); 
+    const [url] = useState(`${baseUrl}/${type}/portfolio/${id}`); // the qr code will be generater from this url 
+    // const [url] = useState(`http://localhost:3000/professional/portfolio/67dc5ae843287a2e49ad613c`); // the qr code will be generater from this url 
+    //https://frontend-8tzmv39qb-jenny-os-projects.vercel.app/professional/portfolio/67dc5ae843287a2e49ad613c
+
     const qrCodeRef = useRef(null);
 
     // function to download the QR code 

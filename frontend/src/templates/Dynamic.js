@@ -57,7 +57,7 @@ const Dynamic = () => {
 
     // handling the saving of the template
     const handleSubmit = async (id, html,css) => {
-        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/saveTemplate/${id}`, {html, css})   
+        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/saveTemplate/${id}`, {html, css})   
         .then((response) => {
             alert('Template saved!');  
 

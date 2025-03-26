@@ -17,7 +17,7 @@ const ProfessionalPreview = () => {
     
     // getting the portfolio data when the page loads 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/templates/professional/${id}`)
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/templates/professional/${id}`)
             .then((response) => {
                 setTitle(response.data.profile.title);
                 setSlogan(response.data.profile.slogan);
