@@ -11,6 +11,7 @@ import ProfessionalPreview from './Previews/ProfessionalPreview';
 import QrCodeGenerator from './components/QrCodeGenerator';
 import ProfessionalPortfolio from './Portfolio/ProfessionalPortfolio';
 import Footer from './components/Footer.js';
+import Home from './components/Pages/Home.js';
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
         <Navigation />
         <div className="main-content">
           <Routes>
+            {/* Home page  */}
+            <Route path="/" element={<Home />}/>
             {/* credentials page */}
             <Route path="/signUp" element={<SignUp />}/>
             <Route path="/login" element={<Login />}/>

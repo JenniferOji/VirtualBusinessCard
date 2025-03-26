@@ -198,6 +198,8 @@ const Professional = () => {
                 <div className='form-buttons'>
                     <button className="save" type="submit">Save</button>
                     <button onClick={loadPreview} className='preview'>Preview </button>
+                </div>
+                <div className='submit-button'>
                     <button onClick={handldeFormSubmit} className='submit'>Submit </button>
                 </div>
             </form>

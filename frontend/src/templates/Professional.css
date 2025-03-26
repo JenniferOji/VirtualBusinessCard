@@ -27,8 +27,16 @@ input {
     border: 1px solid #ccc;
 }
 
+.form-buttons {
+    margin-top: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
 .save {
-    background-color: #3586ff;
+    background-color: #89CFF0;
     padding: 8px;
     border-radius: 6px;
     border-color: #ccc;
@@ -36,22 +44,27 @@ input {
     padding-right: 75px;
     padding-top: 15px;
     padding-bottom: 15px;
+    flex: 0 0 40%; 
+    /* taking up 40% of the parent container */
+
 }
 
 .preview {
-    background-color: #3586ff;
+    background-color: #6c757d;
     padding: 8px;
     border-radius: 6px;
     border-color: #ccc;
-    padding-left:60px;
-    padding-right: 60px;
+    padding-left:80px;
+    padding-right: 80px;
     padding-top: 15px;
     padding-bottom: 15px;
+    flex: 0 0 40%;
+    /* taking up 40% of the parent container */
 
 }
 
 .submit {
-    background-color: green;
+    background-color: #28a745;
     padding: 8px;
     border-radius: 6px;
     border-color: #ccc;
@@ -59,17 +72,18 @@ input {
     padding-right: 60px;
     padding-top: 15px;
     padding-bottom: 15px;
+    flex: 0 0 100%;
 
+}
 
+.submit-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 }
 
 .header {
     text-align: center;
 }
 
-.form-buttons {
-    margin-top: 20px;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-}
