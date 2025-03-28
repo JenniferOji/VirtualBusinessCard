@@ -70,7 +70,7 @@ const Dynamic = () => {
 
     return (
         <div className="App">
-            <button onClick={look}>Preview</button>
+            {/* <button onClick={look}>Preview</button> */}
             <div id="editor"></div>
         </div>
     );

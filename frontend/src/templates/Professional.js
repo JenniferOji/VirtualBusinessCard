@@ -7,6 +7,7 @@ import './Professional.css';
 
 const Professional = () => {
     const {id} = useParams();
+
     // default states if the user does not have a professional profile created yet
     const [title, setTitle] = useState("Enter business name");
     const [slogan, setSlogan] = useState("Enter slogan");
@@ -40,6 +41,40 @@ const Professional = () => {
             console.log("Error", error);
             });
     }, [id]);
+
+    // loading uploaded images to the screen 
+    useEffect(() => {
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            var files = event.target.files;
+            var displayImage = document.getElementById('displayImage');
+            
+            // clearing any previous html content 
+            displayImage.innerHTML = '';
+        
+            // looping through all the selected files 
+            for (var i = 0; i < files.length; i++) {
+              var file = files[i];
+        
+              // only using image files - png, jpeg etc
+              if (!file.type.match('image.*')) {
+                continue;
+              }
+        
+              var imgContainer = document.createElement('div');
+              imgContainer.style.marginBottom = '20px'; 
+        
+              var img = document.createElement('img');
+              img.src = URL.createObjectURL(file);
+              img.style.height = '150px';
+              img.style.display = 'block'; // displayinng the image on a block to put it in a new line 
+              img.style.marginBottom = '10px';
+                
+              // appending the image and file info to the container
+              imgContainer.appendChild(img);        
+              displayImage.appendChild(imgContainer);
+            }
+          });
+    })
 
     // updating the users profile on submit
     const handleSave = async (e) => {
@@ -91,9 +126,12 @@ const Professional = () => {
     return (
         <div className="containerForm">
             <form onSubmit={handleSave}>
-                <h2 className='header'> Business Portfolio </h2>
+                <h1 className='header'> Product Portfolio </h1>
+                <br />
+                <hr />
+                <br />
                 <div className='form'>
-                    <h3>Buisness Name</h3>
+                    <h4>Buisness Name</h4>
                     <input 
                         type="text" 
                         value={title}
@@ -102,8 +140,9 @@ const Professional = () => {
                         required // making the field required so that the use cannot coniune without filling the field in
                     />
                 </div>
+                <br />
                 <div className='form'>
-                    <h3>Enter slogan</h3>
+                    <h4>Enter slogan</h4>
                     <input 
                         type="text" 
                         value={slogan}
@@ -112,8 +151,9 @@ const Professional = () => {
                         required // making the field required so that the use cannot coniune without filling the field in
                     />
                 </div>
+                <br />
                 <div className='form'>
-                    <h3>Enter product name</h3>
+                    <h4>Enter product name</h4>
                     <input 
                         type="text" 
                         value={product}
@@ -122,9 +162,16 @@ const Professional = () => {
                         required // making the field required so that the use cannot coniune without filling the field in
                     />
                 </div>
+                <br />
                 <div className='form'>
-                    <h3>Upload image here</h3>
-                    <img src="/images/template1.png" alt="Profile" style={{ width: "100px" }} />
+                    <h4 for="fileInput">Upload image here</h4>
+                    <div className='displayed-images'>
+                        <div id="displayImage"></div>
+                    </div>
+                    <input type="file" id="fileInput" accept="image/*" multiple></input>
+                    </div>   
+                <br /> 
+                <div className='form'>
                     <h3> The product description</h3>
                     <textarea 
                         rows="4" 
@@ -136,9 +183,10 @@ const Professional = () => {
                     >  
                     </textarea>
                 </div>
+                <br />
                 <div className='form'>
 
-                    <h3>Enter products features </h3>
+                    <h4>Enter products features </h4>
                     <textarea 
                         rows="2" 
                         type="text" 
@@ -171,9 +219,9 @@ const Professional = () => {
                     >  
                     </textarea>
                 </div>
+                <br />
                 <div className='form'>
-
-                    <h3>Enter your contacts</h3>
+                    <h4>Enter your contacts</h4>
                     <textarea 
                         rows="2" 
                         type="text" 
