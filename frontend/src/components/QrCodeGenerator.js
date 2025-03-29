@@ -2,10 +2,10 @@ import React, { useState, useRef } from 'react';
 import QRCode from 'react-qr-code';
 import { useParams } from 'react-router-dom';
 import * as htmlToImage from "html-to-image"; // library to generate images from HTML elements 
-
+import './QrCodeGenerator.css'
 // https://dev.to/onlyoneerin/creating-dynamic-qr-codes-using-reactjs-a-step-by-step-tutorial-341a
-function QrCodeGenerator() {
-    const { id, type } = useParams(); // pulling the id from the url 
+function QrCodeGenerator({type, id}) {
+    // const { id, type } = useParams(); // pulling the id from the url 
     const baseUrl = window.location.origin;
     console.log(baseUrl); 
     const [url] = useState(`${baseUrl}/${type}/portfolio/${id}`); // the qr code will be generater from this url 
@@ -29,19 +29,35 @@ function QrCodeGenerator() {
             });
     };
 
+    // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_copy_clipboard
+    const copy = () => {
+      // copying the link to clip board
+        navigator.clipboard.writeText(url)
+            .then(() => {
+                alert("Copied the link: " + url);
+            })
+            .catch((error) => {
+                console.error("Error copying text:", error);
+            });
+    }
+
     return (
-      <div className="qrcode_container">
-        <h1>Generate QR Code</h1>
-        <div className="qrcode_container_parent">
-          </div>
-            <div className="qrcode_download">
-              <div>
+        <div className='main-container'>
+            <div className="qrcode-container">
+                <h1>Portfolio Qr Code</h1>
+            </div>
+            <hr />
+            <div className="qr-code">
                 {/* the qr code generated from the url */}
                 <QRCode value={url} size={300} ref={qrCodeRef} /> 
-              </div>
-              <button onClick={downloadQRCode}>Download Qr Code</button>
+            </div>
+            <div className='qr-button'>
+                <button onClick={downloadQRCode} className='download'>Download Qr Code</button>
+            </div>
+            <div className='link'>
+                <button className='download' onClick={copy}>Copy link</button>
             </div>
         </div>
     );
-  }
-  export default QrCodeGenerator;
+}
+export default QrCodeGenerator;

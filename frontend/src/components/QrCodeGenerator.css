@@ -1,0 +1,43 @@
+.qrcode-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.link-text {
+    background-color: grey;
+    width: 620px;
+    height: 50px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.qr-code {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.qr-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+.download {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.download:hover {
+    background-color: #3f44b6;
+}

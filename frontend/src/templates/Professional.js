@@ -3,10 +3,17 @@ import { useState, useEffect} from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Professional.css';
+import QrCodeGenerator from '../components/QrCodeGenerator';
 
 
 const Professional = () => {
     const {id} = useParams();
+
+    //qr code pop up 
+    const [isOpen, setIsOpen] = useState(false);
+    const togglePopup = () => {
+        setIsOpen(false);
+    };
 
     // default states if the user does not have a professional profile created yet
     const [title, setTitle] = useState("Enter business name");
@@ -109,9 +116,8 @@ const Professional = () => {
             contact1, 
             contact2 }}) // sending the data in the profile object   
         .then((response) => {
-            // navigate('/professional/portfolio/QrCode/' + id);
-            navigate(`/${type}/portfolio/qrCode/${id}`);
-
+            // navigate(`/${type}/portfolio/qrCode/${id}`);
+            setIsOpen(true);
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -127,9 +133,7 @@ const Professional = () => {
         <div className="containerForm">
             <form onSubmit={handleSave}>
                 <h1 className='header'> Product Portfolio </h1>
-                <br />
-                <hr />
-                <br />
+                <br /><hr /><br />
                 <div className='form'>
                     <h4>Buisness Name</h4>
                     <input 
@@ -250,6 +254,15 @@ const Professional = () => {
                 <div className='submit-button'>
                     <button onClick={handldeFormSubmit} className='submit'>Submit </button>
                 </div>
+                {/* https://www.dhiwise.com/post/guide-to-creating-engaging-user-experiences-with-react-popups */}
+                {isOpen && (
+                    <div className="popup">
+                        <QrCodeGenerator type={type} id={id}></QrCodeGenerator>
+                        <div className='pop-but-container'>
+                            <button onClick={togglePopup} className='pop-button'>Close</button>
+                        </div>
+                    </div>
+                )}
             </form>
         </div>
     );

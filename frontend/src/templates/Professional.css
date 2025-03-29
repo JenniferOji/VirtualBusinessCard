@@ -103,3 +103,24 @@ hr {
     justify-content: center;
     align-items: center;
 }
+
+.pop-but-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.pop-button {
+    background-color: gray;
+    border-radius: 6px;
+    border-color: #ccc;
+    padding-left:60px;
+    padding-right: 60px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    flex: 0 0 100%;
+}
+
+.pop-button:hover {
+    background-color: red;
+}

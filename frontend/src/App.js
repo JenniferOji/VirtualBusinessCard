@@ -11,7 +11,7 @@ import ProfessionalPreview from './Previews/ProfessionalPreview';
 import QrCodeGenerator from './components/QrCodeGenerator';
 import ProfessionalPortfolio from './Portfolio/ProfessionalPortfolio';
 import Footer from './components/Footer.js';
-import Home from './components/Pages/Home.js';
+import Home from './Pages/Home.js';
 
 function App() {
   return (

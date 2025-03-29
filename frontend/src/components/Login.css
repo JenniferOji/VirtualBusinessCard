@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    margin-top: 50px;
+    background-color: #f4f4f4;
+    border-radius: 15px;
+    width: 700px;
+    padding: 70px;
+}
+
+.input-box {
+    width: 560px;
+    box-shadow: 4px 4px #888888;
+}
+
+.custom-button {
+    background-color: #3f44b6; 
+    border-color: black;
+    width: 120px;
+    height: 40px;
+    border-radius: 15px;
+    color: white;
+    box-shadow: 2px 2px #888888;
+}
+
+.custom-button:hover {
+    background-color: darkblue;
+}
