@@ -8,25 +8,24 @@ const SignUp = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const create = "";
     const qrCode = "";
     const profile = { title: "", slogan: "",
-                      product: "", description: "",        
+                      product: "", image: "",
+                      description: "",        
                       feature1: "", feature2: "",     
-                      feature3: "", contact1: "", contact2: "",};
+                      feature3: "", contact1: "", contact2: ""};
     const dynamic = { html: "", css: "" };    
     const navigate = useNavigate(); 
 
     // handling the submission of the form 
     const handleSubmit = async (e) => {
         e.preventDefault(); 
-        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/register`, { username, email, password, create, qrCode, profile, dynamic })   
+        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/register`, { username, email, password, qrCode, profile, dynamic })   
         .then((response) => {
             alert('Account created successfully!');
             // getting the users id from the resposne to direct them to their personal create page 
             const userId = response.data.id;
             navigate('/templates/' + userId);
-
         })
         .catch((error) => {
             console.error('Error:', error);

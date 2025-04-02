@@ -25,8 +25,8 @@ app.use(express.json());
 
 
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' })); // increasing the limit the 
-app.use(bodyParser.json({ limit: '10mb' })); // increasing the limit for the json to store images 
+app.use(bodyParser.urlencoded({ extended: true, limit: '60mb' })); // increasing the limit  
+app.use(bodyParser.json({ limit: '60mb' })); // increasing the limit for the json to store images 
 
 
 const mongoose = require('mongoose');
@@ -40,7 +40,6 @@ const accountsSchema = new mongoose.Schema({
     username: String,
     email: String,
     password: String,
-    create: String,
     qrCode: String,
     profile: {
         title: String,
@@ -51,13 +50,14 @@ const accountsSchema = new mongoose.Schema({
         feature2: String,     
         feature3: String,     
         contact1: String,   
-        contact2: String,     
+        contact2: String,   
+        image: String,
     },
     dynamic: {
         html: String,
         css: String
     }
-});
+}, { strict: false }); 
 
 const AccountModel = mongoose.model('Account', accountsSchema);
 
@@ -65,11 +65,10 @@ const AccountModel = mongoose.model('Account', accountsSchema);
 app.post('/register', async (req, res) => {
     res.set('Access-Control-Allow-Origin', '*');
     // pulling the email and password out of the request body 
-    const { username, email, password, create, qrCode, profile, dynamic} = req.body;
-  
+    const { username, email, password, qrCode, profile, dynamic} = req.body;
     try {    
         // creating a new account and saving it to the database model
-        const newAccount = new AccountModel({ username, email, password, create, qrCode, profile, dynamic });
+        const newAccount = new AccountModel({ username, email, password, qrCode, profile, dynamic });
         await newAccount.save();
         console.log("Account created successfully")
         // creating the account and sending back the users profile id so they can be redirected to the profile page 
@@ -77,7 +76,7 @@ app.post('/register', async (req, res) => {
     } catch (error) {
         console.error("Error:", error); 
         res.status(500).json({ message: "Server Error" });
-    }
+    } 
 });
 
 // retrieving a specifc user by email and password

@@ -33,7 +33,9 @@ input {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
+    flex: 0 0 100%;
+
 }
 .save {
     background-color: #89CFF0;
@@ -44,7 +46,7 @@ input {
     padding-right: 75px;
     padding-top: 15px;
     padding-bottom: 15px;
-    flex: 0 0 40%; 
+    flex: 0 0 50%; 
     /* taking up 40% of the parent container */
 
 }
@@ -58,9 +60,8 @@ input {
     padding-right: 80px;
     padding-top: 15px;
     padding-bottom: 15px;
-    flex: 0 0 40%;
+    flex: 0 0 50%;
     /* taking up 40% of the parent container */
-
 }
 
 .submit {
@@ -74,6 +75,9 @@ input {
     padding-bottom: 15px;
     flex: 0 0 100%;
 
+}
+.submit:hover {
+    background-color: darkblue;
 }
 
 .submit-button {
@@ -110,6 +114,7 @@ hr {
     align-items: center;
     margin-top: 20px;
 }
+
 .pop-button {
     background-color: gray;
     border-radius: 6px;
@@ -123,4 +128,9 @@ hr {
 
 .pop-button:hover {
     background-color: red;
+}
+
+.uploaded-image {
+    width: 300px;
+    height: auto;
 }

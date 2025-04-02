@@ -8,6 +8,7 @@ const ProfessionalPreview = () => {
     const [title, setTitle] = useState('');
     const [slogan, setSlogan] = useState('');
     const [product, setProduct] = useState('');
+    const [image, setImage] = useState('');
     const [description, setDescription] = useState('');
     const [feature1, setFeature1] = useState('');
     const [feature2, setFeature2] = useState('');
@@ -22,6 +23,7 @@ const ProfessionalPreview = () => {
                 setTitle(response.data.profile.title);
                 setSlogan(response.data.profile.slogan);
                 setProduct(response.data.profile.product);
+                setImage(response.data.profile.image);
                 setDescription(response.data.profile.description);
                 setFeature1(response.data.profile.feature1);
                 setFeature2(response.data.profile.feature2);
@@ -41,7 +43,7 @@ const ProfessionalPreview = () => {
                 <p>{slogan}</p>
                 <hr />
                 <div className='image'>
-                    <img src="/images/template1.png"></img>
+                    <img src={image} className='product-image'></img>
                 </div>
                 <hr />
                 <h2>Introducing {product}</h2>

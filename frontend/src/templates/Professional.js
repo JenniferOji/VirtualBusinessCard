@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Professional.css';
 import QrCodeGenerator from '../components/QrCodeGenerator';
-
+import imageCompression from 'browser-image-compression';
 
 const Professional = () => {
     const {id} = useParams();
@@ -19,12 +19,13 @@ const Professional = () => {
     const [title, setTitle] = useState("Enter business name");
     const [slogan, setSlogan] = useState("Enter slogan");
     const [product, setProduct] = useState("Enter product name");
+    const [image, setImage] = useState("");
     const [description, setDescription] = useState("Enter description");
     const [feature1, setFeature1] = useState("Enter feature");
     const [feature2, setFeature2] = useState("Enter feature");
     const [feature3, setFeature3] = useState("Enter feature");
-    const [contact1, setContact1] = useState("Enter contact");
-    const [contact2, setContact2] = useState("Enter contact");
+    const [contact1, setContact1] = useState("Email: ");
+    const [contact2, setContact2] = useState("Phone: ");
 
     const[type] = useState("professional");
 
@@ -43,45 +44,12 @@ const Professional = () => {
                 setFeature3(response.data.profile.feature3);
                 setContact1(response.data.profile.contact1);
                 setContact2(response.data.profile.contact2);
+                setImage(response.data.profile.image);
             })
             .catch((error) => {
             console.log("Error", error);
             });
     }, [id]);
-
-    // loading uploaded images to the screen 
-    useEffect(() => {
-        document.getElementById('fileInput').addEventListener('change', function(event) {
-            var files = event.target.files;
-            var displayImage = document.getElementById('displayImage');
-            
-            // clearing any previous html content 
-            displayImage.innerHTML = '';
-        
-            // looping through all the selected files 
-            for (var i = 0; i < files.length; i++) {
-              var file = files[i];
-        
-              // only using image files - png, jpeg etc
-              if (!file.type.match('image.*')) {
-                continue;
-              }
-        
-              var imgContainer = document.createElement('div');
-              imgContainer.style.marginBottom = '20px'; 
-        
-              var img = document.createElement('img');
-              img.src = URL.createObjectURL(file);
-              img.style.height = '150px';
-              img.style.display = 'block'; // displayinng the image on a block to put it in a new line 
-              img.style.marginBottom = '10px';
-                
-              // appending the image and file info to the container
-              imgContainer.appendChild(img);        
-              displayImage.appendChild(imgContainer);
-            }
-          });
-    })
 
     // updating the users profile on submit
     const handleSave = async (e) => {
@@ -93,7 +61,9 @@ const Professional = () => {
             feature2,    
             feature3,    
             contact1, 
-            contact2 }}) // sending the data in the profile object   
+            contact2,
+            image,
+        }}) // sending the data in the profile object   
         .then((response) => {
             //alert('Saved successfully');  
         })
@@ -101,6 +71,26 @@ const Professional = () => {
             console.error('Error:', error);
             alert('Failed to save profile');
         });
+    };
+
+    // converting the image to base64 - https://stackoverflow.com/questions/71748138/how-do-i-convert-image-file-to-base64
+    const handleImageUpload = async (event) => {
+        const file = event.target.files[0]; // accessing the file selected 
+        if (!file) return;
+      
+        const adjustments = {
+          maxSizeMB: 5, // file size
+          maxWidthOrHeight: 300, // compressing the image dimensions
+        };
+      
+        // comprasing the image to be able to store it in the database - https://stackoverflow.com/questions/47956281/best-way-to-compress-an-image-javascript-react-web-app
+        const compressedFile = await imageCompression(file, adjustments);
+        const reader = new FileReader();
+         // reading the file image and converting it to base64
+        reader.readAsDataURL(compressedFile);
+        reader.onloadend = () => {
+            setImage(reader.result);
+        };
     };
 
     // updating the users profile on submit
@@ -114,7 +104,9 @@ const Professional = () => {
             feature2,    
             feature3,    
             contact1, 
-            contact2 }}) // sending the data in the profile object   
+            contact2,
+            image,
+        }}) // sending the data in the profile object   
         .then((response) => {
             // navigate(`/${type}/portfolio/qrCode/${id}`);
             setIsOpen(true);
@@ -128,6 +120,7 @@ const Professional = () => {
     const loadPreview = async (e) => {
         navigate('/professional/portfolio/preview/' + id);
     }
+
 
     return (
         <div className="containerForm">
@@ -170,10 +163,12 @@ const Professional = () => {
                 <div className='form'>
                     <h4 for="fileInput">Upload image here</h4>
                     <div className='displayed-images'>
-                        <div id="displayImage"></div>
+                        {/* {imageBase64 && <img src={imageBase64} alt="Uploaded Preview" className='uploaded-image' />} */}
+                        {image && <img src={image} alt="Uploaded Preview" className='uploaded-image' />}
+
                     </div>
-                    <input type="file" id="fileInput" accept="image/*" multiple></input>
-                    </div>   
+                        <input type="file" id="fileInput" accept="image/*" onChange={handleImageUpload}></input>
+                </div>       
                 <br /> 
                 <div className='form'>
                     <h3> The product description</h3>
