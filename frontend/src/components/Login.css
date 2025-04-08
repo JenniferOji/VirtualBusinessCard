@@ -2,18 +2,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px;
+
 }
 
 .content {
-    margin-top: 50px;
     background-color: #f4f4f4;
-    border-radius: 15px;
-    width: 700px;
-    padding: 70px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 40px 30px;
+    width: 100%;
+    max-width: 800px; 
 }
 
 .input-box {
-    width: 560px;
+    width: 100%;
+    padding: 12px;
     box-shadow: 4px 4px #888888;
 }
 

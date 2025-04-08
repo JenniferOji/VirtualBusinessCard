@@ -1,8 +1,11 @@
 body {
-    background-color: #eee;
     font-family: Arial, sans-serif;
 }
 
+.templates {
+    margin-top: 50px;
+    padding: 20px;
+}
 .container {
     max-width: 1200px;
     width: 100%;
@@ -20,8 +23,9 @@ body {
     align-items: center;
     text-align: left; 
     padding: 20px;
-    background: white;
+    background-color: #f4f4f4 !important;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
 .card-content {
@@ -41,9 +45,12 @@ body {
     cursor: pointer;
     transition: background 0.3s ease-in-out;
     margin-top: 15px;  
+    background-color: #3f44b6; 
+    color: white;
+
 }
 
 .button:hover {
-    background-color: #3f44b6;
+    background-color: darkblue;
 }
 

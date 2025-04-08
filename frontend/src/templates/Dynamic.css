@@ -1,0 +1,102 @@
+/* https://stackoverflow.com/questions/75211033/how-to-change-the-editor-default-color-to-some-other-color-in-grapesjs-in-react */
+.gjs-one-bg {
+    background-color: #3f44b6 !important
+}
+
+.gjs-cv-canvas {
+    background-color: #f4f4f4 !important
+}
+
+.gjs-one-color {
+    color: #f4f4f4
+}
+
+.gjs-pn-panel {
+    color: #fff;
+}
+
+.gjs-one-color-h:hover {
+    color: #fff
+}
+
+.gjs-two-bg {
+    background-color: #b9a5a6
+}
+
+.gjs-two-color {
+    color: #fff !important
+}
+
+.gjs-two-color-h:hover {
+    color: #fff
+}
+
+.gjs-three-bg {
+    background-color: #fff
+}
+
+.gjs-three-color {
+    color: #b9a5a6
+}
+
+.gjs-three-color-h:hover {
+    color: #b9a5a6
+}
+
+.gjs-four-bg {
+    background-color: #d97aa6
+}
+
+.gjs-four-color {
+    color: #d97aa6
+}
+
+.gjs-four-color-h:hover {
+    color: #d97aa6
+}
+
+/*override*/
+.gjs-title,
+.gjs-layer-name,
+.gjs-no-app,
+.gjs-sm-title{
+    font-weight: 500 !important;
+}
+
+
+.gjs-color-warn {
+  color: #fff;
+}
+
+.gjs-clm-tags #gjs-clm-checkbox,
+.gjs-clm-tags #gjs-clm-close {
+    color: #fff !important;
+}
+
+
+.gjs-clm-tags #gjs-clm-new {
+  color: #fff;
+  padding: 5px 6px;
+  display: none;
+  background-color: #eee;
+}
+
+.gjs-sm-sector .gjs-sm-field select, .gjs-clm-tags .gjs-sm-field select, .gjs-sm-sector .gjs-clm-field select, .gjs-clm-tags .gjs-clm-field select,
+.gjs-sm-sector .gjs-sm-field input, .gjs-clm-tags .gjs-sm-field input, .gjs-sm-sector .gjs-clm-field input, .gjs-clm-tags .gjs-clm-field input,
+.gjs-field input, .gjs-field select, .gjs-field textarea {
+  color: black;
+  background-color: #fff;
+  font-size: 13px;
+}
+
+.gjs-field-color-picker {
+  background-color: #aaa !important;
+}
+
+.gjs-radio-item input:checked + .gjs-radio-item-label {
+  background-color: #fff;
+}
+
+.gjs-sm-sector .gjs-sm-stack #gjs-sm-add, .gjs-clm-tags .gjs-sm-stack #gjs-sm-add {
+  color: #fff;
+}

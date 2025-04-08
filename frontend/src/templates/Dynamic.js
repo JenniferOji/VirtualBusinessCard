@@ -5,7 +5,7 @@ import gjsBlocksBasic from "grapesjs-blocks-basic";
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
+import './Dynamic.css'
 const Dynamic = () => {
     const {id} = useParams();
     const [editor, setEditor] = useState(null);

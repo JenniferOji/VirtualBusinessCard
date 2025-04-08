@@ -19,45 +19,45 @@ const Templates = () => {
     };
 
     return (
-        <div className="container mt-5 mb-3">
+        <div className='templates'>
             <div className="row">
-                <div className="col-md-4">
+                <div className="col-md-3">
                     <div className="card">
                         <div className="card-content">
-                            <h3>Professional</h3>
+                            <h3>Product</h3>
                             <p>Sleek and modern.</p>
                         </div>
-                        <img src="/images/template1.png" alt="Template1" />
+                        <img src="/images/product2.png" alt="Template1" />
                         <button className="button" onClick={renderProfessionalTemplate}>Use this template</button> 
                     </div>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-3">
                     <div className="card">
                         <div className="card-content">
-                            <h3>Creative</h3>
+                            <h3>Freelancer</h3>
                             <p>Bold and colorful.</p>
                         </div>
-                        <img src="/images/template1.png" alt="Template1" />
+                        <img src="/images/freelance2.png" alt="Template1" />
                         <button className="button">Use this template</button> 
                     </div>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-3">
                     <div className="card">
                         <div className="card-content">
-                            <h3>Minimalist</h3>
+                            <h3>Service</h3>
                             <p>Clean and simple.</p>
                         </div>
-                        <img src="/images/template1.png" alt="Template1" />
+                        <img src="/images/service.png" alt="Template1" />
                         <button className="button">Use this template</button> 
                     </div>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-3">
                     <div className="card">
                         <div className="card-content">
                             <h3>Dynamic</h3>
                             <p>Create your own</p>
                         </div>
-                        <img src="/images/template1.png" alt="Template1"/>
+                        <img src="/images/dynamic2.png" alt="Template1"/>
                         <button className="button" onClick={renderDynamicTemplate}>Use this template</button> 
                     </div>
                 </div>
