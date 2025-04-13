@@ -254,7 +254,7 @@ const Professional = () => {
                     <div className="popup">
                         <QrCodeGenerator type={type} id={id}></QrCodeGenerator>
                         <div className='pop-but-container'>
-                            <button onClick={togglePopup} className='pop-button'>Close</button>
+                            <button onClick={togglePopup} className='close-button'>Close</button>
                         </div>
                     </div>
                 )}

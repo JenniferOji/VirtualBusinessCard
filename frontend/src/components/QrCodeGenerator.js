@@ -55,7 +55,7 @@ function QrCodeGenerator({type, id}) {
                 <button onClick={downloadQRCode} className='download'>Download Qr Code</button>
             </div>
             <div className='link'>
-                <button className='download' onClick={copy}>Copy link</button>
+                <button className='copy' onClick={copy}>Copy link</button>
             </div>
         </div>
     );

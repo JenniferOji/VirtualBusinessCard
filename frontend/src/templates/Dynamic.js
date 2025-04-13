@@ -5,14 +5,25 @@ import gjsBlocksBasic from "grapesjs-blocks-basic";
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import QrCodeGenerator from '../components/QrCodeGenerator';
 import './Dynamic.css'
+
 const Dynamic = () => {
+    //qr code pop up 
+    const [isOpen, setIsOpen] = useState(false);
+    const togglePopup = () => {
+        setIsOpen(false);
+    };
+
     const {id} = useParams();
     const [editor, setEditor] = useState(null);
     const navigate = useNavigate();
     const look = () => {
         navigate('/dynamic/portfolio/' + id);
     }
+    
+    const[type] = useState("dynamic");
+
 
     // inititalising grape.js
     useEffect(() => {
@@ -49,18 +60,17 @@ const Dynamic = () => {
             run: async (editor) => {
                 const html = editor.getHtml();
                 const css = editor.getCss();
-                await handleSubmit(id, html,css)
+                await saveTemplate(id, html,css)
             }
         });
         setEditor(editor);
     }, [id]);
 
     // handling the saving of the template
-    const handleSubmit = async (id, html,css) => {
+    const saveTemplate = async (id, html,css) => {
         await axios.post(`${process.env.REACT_APP_BACKEND_URL}/saveTemplate/${id}`, {html, css})   
         .then((response) => {
-            alert('Template saved!');  
-
+            alert("Template saved !")
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -68,10 +78,50 @@ const Dynamic = () => {
         });
     };
 
+    // handling the saving of the template
+    const submitTemplate = async (id, html,css) => {
+        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/saveTemplate/${id}`, {html, css})   
+        .then((response) => {
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('Failed to save');
+        });
+    };
+
+    const handleSubmit = () => {
+        if (editor) {
+            const html = editor.getHtml();
+            const css = editor.getCss();
+            submitTemplate(id, html, css);
+            setIsOpen(true);
+        } else {
+            alert("Unable to submit");
+        }
+    };    
+
     return (
         <div className="App">
             {/* <button onClick={look}>Preview</button> */}
             <div id="editor"></div>
+            <div>
+            <div className='submit-container'>
+                <div className='submit-button'>
+                    <button onClick={handleSubmit} className='submit'>Submit </button>
+                </div>
+            </div>
+                {/* https://www.dhiwise.com/post/guide-to-creating-engaging-user-experiences-with-react-popups */}
+                <div className='popup-container'>
+                    {isOpen && (
+                        <div className="popup">
+                            <QrCodeGenerator type={type} id={id}></QrCodeGenerator>
+                            <div className='pop-but-container'>
+                                <button onClick={togglePopup} className='close-button'>Close</button>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </div>
         </div>
     );
 }

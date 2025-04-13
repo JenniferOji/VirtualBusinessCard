@@ -1,3 +1,54 @@
+.popup {
+    width: 100%;
+    max-width: 900px;
+    background-color: #f4f4f4;
+    padding: 20px;
+
+}
+
+.popup-container {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.submit {
+    background-color: #3f44b6;
+    padding: 8px;
+    border-radius: 6px;
+    border-color: #ccc;
+    padding-left:60px;
+    padding-right: 60px;
+    /* padding-top: 15px; */
+    padding-bottom: 15px;
+    flex: 0 0 100%;
+    color: white;
+
+}
+
+.submit-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.submit:hover {
+    background-color: darkblue;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
+.submit-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    
+    width: 100%;
+    max-width: 900px;
+}
+
 /* https://stackoverflow.com/questions/75211033/how-to-change-the-editor-default-color-to-some-other-color-in-grapesjs-in-react */
 .gjs-one-bg {
     background-color: #3f44b6 !important
@@ -43,16 +94,10 @@
     color: #b9a5a6
 }
 
-.gjs-four-bg {
-    background-color: #d97aa6
-}
-
-.gjs-four-color {
-    color: #d97aa6
-}
-
-.gjs-four-color-h:hover {
-    color: #d97aa6
+.gjs-pn-btn svg,
+.gjs-pn-btn svg * {
+  fill: #fff !important;
+  stroke: #fff !important;
 }
 
 /*override*/
@@ -99,4 +144,23 @@
 
 .gjs-sm-sector .gjs-sm-stack #gjs-sm-add, .gjs-clm-tags .gjs-sm-stack #gjs-sm-add {
   color: #fff;
+}
+
+/* panel of boxes */
+.gjs-blocks-c {
+    background-color: #3f44b6 !important;
+}
+
+/* individual boxes */
+.gjs-block {
+    background-color: #FFFFFF !important; 
+    border: 1px solid #3f44b6 !important;
+    color: #3f44b6;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.gjs-block:hover {
+    background-color: #f4f4f4 !important;
+    color: #000000 !important;
+
 }
