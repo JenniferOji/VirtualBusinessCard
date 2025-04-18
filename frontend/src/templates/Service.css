@@ -1,0 +1,143 @@
+.containerForm {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+textarea {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+input {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.form-buttons {
+    margin-top: 20px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+
+
+}
+.save, .preview{
+    flex: 0 0 50%;
+    padding: 15px 0;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    /* taking up 40% of the parent container */
+}
+
+.save {
+    background-color: #949EE9;
+}
+
+.save:hover {
+    background-color: #838CDF;
+}
+
+.preview {
+    background-color: #6BBF8E   ;
+}
+
+.preview:hover {
+    background-color: #5B9E7A;
+}
+
+.submit {
+    background-color: #3f44b6;
+    padding: 8px;
+    border-radius: 6px;
+    border-color: #ccc;
+    padding-left:60px;
+    padding-right: 60px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    flex: 0 0 100%;
+    color: white;
+    padding: 15px 0;
+}
+
+.submit:hover {
+    background-color: darkblue;
+}
+
+.submit-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.header {
+    text-align: center;
+}
+
+hr {
+    height: 3px;
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+}
+
+.displayed-images {
+    overflow: hidden;
+    overflow-y: auto;  
+    scrollbar-width: thin; 
+    scrollbar-color: #888 #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pop-but-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.close-button {
+    background-color: #6c757d;
+    border-radius: 6px;
+    border-color: #ccc;
+    padding-left:60px;
+    padding-right: 60px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    flex: 0 0 100%;
+    color: white;
+
+}
+
+.close-button:hover {
+    background-color: #616970;
+}
+
+.uploaded-image {
+    width: 300px;
+    height: auto;
+}

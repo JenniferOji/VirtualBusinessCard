@@ -12,6 +12,12 @@ import QrCodeGenerator from './components/QrCodeGenerator';
 import ProfessionalPortfolio from './Portfolio/ProfessionalPortfolio';
 import Footer from './components/Footer.js';
 import Home from './Pages/Home.js';
+import Freelancer from './templates/Freelancer.js';
+import Service from './templates/Service.js';
+import FreelancePreview from './Previews/FreelancePreview.js';
+import ServicePreview from './Previews/ServicePreview.js';
+import FreelancePortfolio from './Portfolio/FreelancePortfolio.js';
+import ServicePortfolio from './Portfolio/ServicePortfolio.js';
 
 function App() {
   return (
@@ -31,6 +37,8 @@ function App() {
 
             {/* specific templates */}
             <Route path="/templates/professional/:id" element={<Professional />}/>
+            <Route path="/templates/freelancer/:id" element={<Freelancer />}/>
+            <Route path="/templates/service/:id" element={<Service />}/>
             <Route path="/templates/dynamic/:id" element={<Dynamic />}/>
 
             {/* 'type' holding the kind of portfolio - dynamic, professional, creative, minimalist */}
@@ -38,9 +46,13 @@ function App() {
 
             {/* portfolio previews  */}
             <Route path="/professional/portfolio/preview/:id" element={<ProfessionalPreview />} />
+            <Route path="/freelance/portfolio/preview/:id" element={<FreelancePreview />} />
+            <Route path="/service/portfolio/preview/:id" element={<ServicePreview />} />
 
             {/* portfolios from qr code scan  */}
             <Route path="/professional/portfolio/:id" element={<ProfessionalPortfolio />} />
+            <Route path="/freelance/portfolio/:id" element={<FreelancePortfolio />} />
+            <Route path="/service/portfolio/:id" element={<ServicePortfolio />} />
             <Route path="/dynamic/portfolio/:id" element={<DynamicPortfolio />} />
           </Routes>  
         </div>

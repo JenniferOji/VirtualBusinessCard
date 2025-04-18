@@ -9,18 +9,16 @@ const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const qrCode = "";
-    const profile = { title: "", slogan: "",
-                      product: "", image: "",
-                      description: "",        
-                      feature1: "", feature2: "",     
-                      feature3: "", contact1: "", contact2: ""};
+    const profile = { title: "", slogan: "",product: "", image: "", description: "", feature1: "", feature2: "", feature3: "", contact1: "", contact2: ""};
+    const freelance = { name: "", branding1: "", branding2: "", aboutMe: "", skill1: "", skill2: "", skill3: "", service1: "", service2: "", service3: "", projectName1: "", projectDescription1: "", projectLink1: "", projectName2: "", projectDescription2: "", projectLink2: "", contact1: "", contact2: "" };
+    const service = { title: "", slogan: "", product: "", image: "", description: "", service1: "", service2: "", service3: "", service4: "", feature1: "", feature2: "", feature3: "", testimonialQuote1: "", testimonialName1: "", testimonialQuote2: "", testimonialName2: "", contact1: "", contact2: "" };
     const dynamic = { html: "", css: "" };    
     const navigate = useNavigate(); 
 
     // handling the submission of the form 
     const handleSubmit = async (e) => {
         e.preventDefault(); 
-        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/register`, { username, email, password, qrCode, profile, dynamic })   
+        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/register`, { username, email, password, qrCode, profile, freelance, service, dynamic })   
         .then((response) => {
             alert('Account created successfully!');
             // getting the users id from the resposne to direct them to their personal create page 

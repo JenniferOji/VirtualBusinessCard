@@ -53,6 +53,46 @@ const accountsSchema = new mongoose.Schema({
         contact2: String,   
         image: String,
     },
+    freelance: {
+        name: String,
+        branding1: String,
+        branding2: String,
+        aboutMe: String,
+        skill1: String,
+        skill2: String,
+        skill3: String,
+        service1: String,
+        service2: String,
+        service3: String,
+        projectName1: String,
+        projectDescription1: String,
+        projectLink1: String,
+        projectName2: String,
+        projectDescription2: String,
+        projectLink2: String,
+        contact1: String,   
+        contact2: String,
+    },
+    service: {
+        title: String,
+        slogan: String,
+        product: String,
+        image: String,
+        description: String,
+        service1: String,
+        service2: String,
+        service3: String,
+        service4: String,
+        feature1: String,
+        feature2: String,
+        feature3: String,
+        testimonialQuote1: String,
+        testimonialName1: String,
+        testimonialQuote2: String,
+        testimonialName2: String,
+        contact1: String,
+        contact2: String
+    },
     dynamic: {
         html: String,
         css: String
@@ -65,10 +105,10 @@ const AccountModel = mongoose.model('Account', accountsSchema);
 app.post('/register', async (req, res) => {
     res.set('Access-Control-Allow-Origin', '*');
     // pulling the email and password out of the request body 
-    const { username, email, password, qrCode, profile, dynamic} = req.body;
+    const { username, email, password, qrCode, profile, freelance, service, dynamic} = req.body;
     try {    
         // creating a new account and saving it to the database model
-        const newAccount = new AccountModel({ username, email, password, qrCode, profile, dynamic });
+        const newAccount = new AccountModel({ username, email, password, qrCode, profile, freelance, service, dynamic });
         await newAccount.save();
         console.log("Account created successfully")
         // creating the account and sending back the users profile id so they can be redirected to the profile page 
@@ -100,6 +140,7 @@ app.post('/login', async (req, res) => {
     }
 });
  
+// LOADING CURRENT DATA ONTO PAGES 
 // loading current data to the user professional profile page
 app.get('/templates/professional/:id', async (req, res) => {
     res.set('Access-Control-Allow-Origin', '*');
@@ -115,7 +156,38 @@ app.get('/templates/professional/:id', async (req, res) => {
     }
 });
 
-// loading the professional profile page on the users id 
+// loading current data to the user freelance profile page
+app.get('/templates/freelance/:id', async (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*');
+    // when the freelance page is loading it retrives tbe users specific id to display their profile data
+    try{
+        //seraching the databse for the account by its id
+        const account = await AccountModel.findById(req.params.id);
+        // sending back the users profile data
+        res.json({ freelance: account.freelance });
+    } catch (error) {
+        console.error("Error getting profile:", error);
+        res.status(500).json({ message: "Server Error" });
+    }
+});
+
+// loading current data to the user professional profile page
+app.get('/templates/service/:id', async (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*');
+    // when the professional page is loading it retrives tbe users specific id to display their profile data
+    try{
+        //seraching the databse for the account by its id
+        const account = await AccountModel.findById(req.params.id);
+        // sending back the users profile data
+        res.json({ service: account.service });
+    } catch (error) {
+        console.error("Error getting profile:", error);
+        res.status(500).json({ message: "Server Error" });
+    }
+});
+
+// UPDATING THE PAGE OF A PROFILE 
+// updating the professional profile page on the users id 
 app.post('/templates/professional/profile/:id', async (req, res) => {
     res.set('Access-Control-Allow-Origin', '*');
     const { id } = req.params; 
@@ -135,6 +207,71 @@ app.post('/templates/professional/profile/:id', async (req, res) => {
     } catch (error) {
         console.error("Error:", error);
         res.status(500).json({ message: "Server error" });
+    }
+});
+
+app.post('/templates/freelance/profile/:id', async (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*');
+    const { id } = req.params; 
+    const { freelance } = req.body; 
+
+    try {
+        const updatedUserProfile = await AccountModel.findByIdAndUpdate(
+            id, { freelance }, // updating the profile field 
+            { new: true, runValidators: true } // returning the updated document
+        );
+
+        if (!updatedUserProfile) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.status(200).json({ message: "Profile updated successfully", user: updatedUserProfile });
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
+app.post('/templates/service/profile/:id', async (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*');
+    const { id } = req.params; 
+    const { service } = req.body; 
+
+    try {
+        const updatedUserProfile = await AccountModel.findByIdAndUpdate(
+            id, { service }, // updating the profile field 
+            { new: true, runValidators: true } // returning the updated document
+        );
+
+        if (!updatedUserProfile) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.status(200).json({ message: "Profile updated successfully", user: updatedUserProfile });
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
+// SAVING A DYNAMIC TEMPLATE
+// getting the saved dynamic portfolio data for the user
+app.get('/dynamic/portfolio/:id', async (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*');
+    const { id } = req.params; // getting the id from the url header 
+
+    try {
+        const account = await AccountModel.findById(id);
+        
+        if (!account) {
+            return res.status(404).json({ message: "No portfolio found" });
+        }
+
+        // sending back the html and css from the users account
+        res.status(200).json({ user: { html: account.dynamic.html, css: account.dynamic.css } });
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).json({ message: "Server Error" });
     }
 });
 
@@ -160,27 +297,6 @@ app.post('/saveTemplate/:id', async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 });
-
-// getting the saved dynamic portfolio data for the user
-app.get('/dynamic/portfolio/:id', async (req, res) => {
-    res.set('Access-Control-Allow-Origin', '*');
-    const { id } = req.params; // getting the id from the url header 
-
-    try {
-        const account = await AccountModel.findById(id);
-        
-        if (!account) {
-            return res.status(404).json({ message: "No portfolio found" });
-        }
-
-        // sending back the html and css from the users account
-        res.status(200).json({ user: { html: account.dynamic.html, css: account.dynamic.css } });
-    } catch (error) {
-        console.error("Error:", error);
-        res.status(500).json({ message: "Server Error" });
-    }
-});
-
 
 app.get("/", (req, res) => {
     res.send("Virtual Business Card running successfully");

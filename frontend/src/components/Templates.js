@@ -12,6 +12,18 @@ const Templates = () => {
         navigate('/templates/professional/' + id);
     };
 
+    // naviagting to the page of the freelancer template 
+    const renderFreelancerTemplate = async (e) => {
+        e.preventDefault(); 
+        navigate('/templates/freelancer/' + id);
+    };
+
+    // naviagting to the page of the freelancer template 
+    const renderServiceTemplate = async (e) => {
+        e.preventDefault(); 
+        navigate('/templates/service/' + id);
+    };
+
     // naviagting to the page of the dynamic template 
     const renderDynamicTemplate = async (e) => {
         e.preventDefault(); 
@@ -38,7 +50,7 @@ const Templates = () => {
                             <p>Bold and colorful.</p>
                         </div>
                         <img src="/images/freelance2.png" alt="Template1" />
-                        <button className="button">Use this template</button> 
+                        <button className="button" onClick={renderFreelancerTemplate}>Use this template</button> 
                     </div>
                 </div>
                 <div className="col-md-3">
@@ -48,7 +60,7 @@ const Templates = () => {
                             <p>Clean and simple.</p>
                         </div>
                         <img src="/images/service.png" alt="Template1" />
-                        <button className="button">Use this template</button> 
+                        <button className="button" onClick={renderServiceTemplate}>Use this template</button> 
                     </div>
                 </div>
                 <div className="col-md-3">
