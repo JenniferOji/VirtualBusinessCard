@@ -133,13 +133,12 @@ const Service = () => {
                 <h1 className='header'> Service Portfolio </h1>
                 <br /><hr /><br />
                 <div className='form'>
-                    <h4>Business / Service Name</h4>
+                    <h4>Business | Service Name</h4>
                     <input 
                         type="text" 
                         value={title}
                         // updating the value of email on input
                         onChange={(e) => setTitle(e.target.value)} 
-                        required // making the field required so that the use cannot coniune without filling the field in
                     />
                 </div>
                 <br />
@@ -150,7 +149,6 @@ const Service = () => {
                         value={slogan}
                         // updating the value of email on input
                         onChange={(e) => setSlogan(e.target.value)} 
-                        required // making the field required so that the use cannot coniune without filling the field in
                     />
                 </div>
                 <br />
@@ -172,7 +170,6 @@ const Service = () => {
                         value={description}
                         // updating the value of description on input
                         onChange={(e) => setDescription(e.target.value)} 
-                        required // mak
                     >  
                     </textarea>
                 </div>
@@ -185,7 +182,6 @@ const Service = () => {
                         value={service1}
                         // updating the value of description on input
                         onChange={(e) => setService1(e.target.value)} 
-                        required // mak
                     >  
                     </textarea>
                 </div>
@@ -196,7 +192,6 @@ const Service = () => {
                         value={service2}
                         // updating the value of description on input
                         onChange={(e) => setService2(e.target.value)} 
-                        required // mak
                     >  
                     </textarea>
                 </div>
@@ -207,7 +202,6 @@ const Service = () => {
                         value={service3}
                         // updating the value of description on input
                         onChange={(e) => setService3(e.target.value)} 
-                        required // mak
                     >  
                     </textarea>
                 </div>
@@ -218,7 +212,6 @@ const Service = () => {
                         value={service4}
                         // updating the value of description on input
                         onChange={(e) => setService4(e.target.value)} 
-                        required // mak
                     >  
                     </textarea>
                 </div>
@@ -231,7 +224,6 @@ const Service = () => {
                         value={feature1}
                         // updating the value of description on input
                         onChange={(e) => setFeature1(e.target.value)} 
-                        required // mak
                     >  
                     </textarea>
                 </div>
@@ -242,7 +234,6 @@ const Service = () => {
                         value={feature2}
                         // updating the value of description on input
                         onChange={(e) => setFeature2(e.target.value)} 
-                        required // mak
                     >  
                     </textarea>
                 </div>
@@ -253,7 +244,6 @@ const Service = () => {
                         value={feature3}
                         // updating the value of description on input
                         onChange={(e) => setFeature3(e.target.value)} 
-                        required // mak
                     >  
                     </textarea>
                 </div>
@@ -267,7 +257,6 @@ const Service = () => {
                         value={testimonialQuote1}
                         // updating the value of description on input
                         onChange={(e) => setTestimonialQuote1(e.target.value)} 
-                        required // mak
                     >  
                     </textarea>
                 </div>
@@ -278,7 +267,6 @@ const Service = () => {
                         value={testimonialName1}
                         // updating the value of description on input
                         onChange={(e) => setTestimonialName1(e.target.value)} 
-                        required // mak
                         >  
                     </textarea>
                 </div>
@@ -291,7 +279,6 @@ const Service = () => {
                         value={testimonialQuote2}
                         // updating the value of description on input
                         onChange={(e) => setTestimonialQuote2(e.target.value)} 
-                        required // mak
                     >  
                     </textarea>
                 </div>
@@ -302,7 +289,6 @@ const Service = () => {
                         value={testimonialName2}
                         // updating the value of description on input
                         onChange={(e) => setTestimonialName2(e.target.value)} 
-                        required // mak
                         >  
                     </textarea>
                 </div>
@@ -314,7 +300,6 @@ const Service = () => {
                         value={contact1}
                         // updating the value of description on input
                         onChange={(e) => setContact1(e.target.value)} 
-                        required // mak
                     >  
                     </textarea>
                 </div>
@@ -325,7 +310,6 @@ const Service = () => {
                         value={contact2}
                         // updating the value of description on input
                         onChange={(e) => setContact2(e.target.value)} 
-                        required // mak
                     >  
                     </textarea>
                 </div>

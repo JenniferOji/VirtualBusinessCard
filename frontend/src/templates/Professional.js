@@ -134,7 +134,6 @@ const Professional = () => {
                         value={title}
                         // updating the value of email on input
                         onChange={(e) => setTitle(e.target.value)} 
-                        required // making the field required so that the use cannot coniune without filling the field in
                     />
                 </div>
                 <br />
@@ -145,7 +144,6 @@ const Professional = () => {
                         value={slogan}
                         // updating the value of email on input
                         onChange={(e) => setSlogan(e.target.value)} 
-                        required // making the field required so that the use cannot coniune without filling the field in
                     />
                 </div>
                 <br />
@@ -156,7 +154,6 @@ const Professional = () => {
                         value={product}
                         // updating the value of email on input
                         onChange={(e) => setProduct(e.target.value)} 
-                        required // making the field required so that the use cannot coniune without filling the field in
                     />
                 </div>
                 <br />
@@ -178,7 +175,6 @@ const Professional = () => {
                         value={description}
                         // updating the value of description on input
                         onChange={(e) => setDescription(e.target.value)} 
-                        required // mak
                     >  
                     </textarea>
                 </div>
@@ -192,7 +188,6 @@ const Professional = () => {
                         value={feature1}
                         // updating the value of description on input
                         onChange={(e) => setFeature1(e.target.value)} 
-                        required // mak
                     >  
                     </textarea>
                 </div>
@@ -203,7 +198,6 @@ const Professional = () => {
                         value={feature2}
                         // updating the value of description on input
                         onChange={(e) => setFeature2(e.target.value)} 
-                        required // mak
                     >  
                     </textarea>
                 </div>
@@ -214,7 +208,6 @@ const Professional = () => {
                         value={feature3}
                         // updating the value of description on input
                         onChange={(e) => setFeature3(e.target.value)} 
-                        required // mak
                     >  
                     </textarea>
                 </div>
@@ -227,7 +220,6 @@ const Professional = () => {
                         value={contact1}
                         // updating the value of description on input
                         onChange={(e) => setContact1(e.target.value)} 
-                        required // mak
                     >  
                     </textarea>
                 </div>
@@ -238,7 +230,6 @@ const Professional = () => {
                         value={contact2}
                         // updating the value of description on input
                         onChange={(e) => setContact2(e.target.value)} 
-                        required // mak
                     >  
                     </textarea>
                 </div>

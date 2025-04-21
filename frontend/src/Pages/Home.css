@@ -7,17 +7,24 @@
   font-family: "Poppins", sans-serif;
 }
 
+.parent {
+  height: 90vh; 
+  display: flex;
+  flex-direction: column;
+}
+
 .app-logo{
   width: 100%; 
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 50%;
 }
 
 .logo {
-  width: 50%;
+  width: 80%;
   height: auto; 
-  max-width: 100%; 
+  max-width: 50%; 
   object-fit: contain;
 }
 
@@ -29,6 +36,8 @@
     background-color: #3f44b6;
     color: white;
     padding: 70px;
+    height: 50%;
+    overflow-y: auto;
 }
 
 .app-welcome-text {
@@ -44,14 +53,13 @@
 
 .top {
     margin-top: 60px;
-    
 }
 
 .icons {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 85px;
+    margin-top: 25px;
 }
 
 .app-icon {
