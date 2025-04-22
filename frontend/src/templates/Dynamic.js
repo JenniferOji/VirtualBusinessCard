@@ -100,16 +100,23 @@ const Dynamic = () => {
         }
     };    
 
+    const goToTemplates = async (e) => {
+        navigate('/templates/' + id);
+    }
     return (
         <div className="App">
+            <div className='template-button-holder'>
+                    <button className='template-button' onClick={goToTemplates}>Browse templates</button>
+                </div>
             {/* <button onClick={look}>Preview</button> */}
             <div id="editor"></div>
             <div>
-            <div className='submit-container'>
-                <div className='submit-button'>
-                    <button onClick={handleSubmit} className='submit'>Submit </button>
+        
+                <div className='submit-container'>
+                    <div className='submit-button'>
+                        <button onClick={handleSubmit} className='submit'>Submit </button>
+                    </div>
                 </div>
-            </div>
                 {/* https://www.dhiwise.com/post/guide-to-creating-engaging-user-experiences-with-react-popups */}
                 <div className='popup-container'>
                     {isOpen && (

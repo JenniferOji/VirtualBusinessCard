@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './ProfessionalPreview.css';
+import { useNavigate } from 'react-router-dom';
 
 const FreelancePreview = () => {
     const { id } = useParams();
+    const navigate = useNavigate(); 
     
     const [name, setName] = useState(""); 
     const [branding1, setBranding1] = useState("");
@@ -54,39 +56,50 @@ const FreelancePreview = () => {
             });
     }, [id]);
 
-    return (
-        <div className="phoneContainer">
-            <div className="phoneView">
-                <h2>{name}</h2>
-                <p>{branding1} | {branding2}</p>
-                <hr />
-                <h2>About Me</h2>
-                <p>{aboutMe}</p>
-                <h3>Key Skills</h3>
-                <ul>
-                    <li>{skill1}</li>
-                    <li>{skill2}</li>
-                    <li>{skill3}</li>
-                </ul>
-                <h3>Services</h3>
-                <ul>
-                    <li>{service1}</li>
-                    <li>{service2}</li>
-                    <li>{service3}</li>
-                </ul>
-                <h3>Projects</h3>
-                <ol>
-                    <li>{projectName1}: {projectDescription1} </li>
-                    <p><a href={projectLink1}>{projectLink1}</a></p>
-                    <li>{projectName2}: {projectDescription2}</li>
-                    <p><a href={projectLink2}>{projectLink2}</a></p>
+    // naviagting to the page of the dynamic template 
+    const backToPort = async (e) => {
+        e.preventDefault(); 
+        navigate('/templates/freelancer/' + id);
+    };
 
-                </ol>
-                <h3>Contact</h3>
-                <ul>
-                    <li>{contact1}</li>
-                    <li>{contact2}</li>
-                </ul>
+    return (
+        <div>
+            <div className="phoneContainer">
+                <div className="phoneView">
+                    <h2>{name}</h2>
+                    <p>{branding1} | {branding2}</p>
+                    <hr />
+                    <h2>About Me</h2>
+                    <p>{aboutMe}</p>
+                    <h3>Key Skills</h3>
+                    <ul>
+                        <li>{skill1}</li>
+                        <li>{skill2}</li>
+                        <li>{skill3}</li>
+                    </ul>
+                    <h3>Services</h3>
+                    <ul>
+                        <li>{service1}</li>
+                        <li>{service2}</li>
+                        <li>{service3}</li>
+                    </ul>
+                    <h3>Projects</h3>
+                    <ol>
+                        <li>{projectName1}: {projectDescription1} </li>
+                        <p><a href={projectLink1}>{projectLink1}</a></p>
+                        <li>{projectName2}: {projectDescription2}</li>
+                        <p><a href={projectLink2}>{projectLink2}</a></p>
+
+                    </ol>
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>{contact1}</li>
+                        <li>{contact2}</li>
+                    </ul>
+                </div>
+            </div>
+            <div className='portfolio-button'>
+                <button className='button' onClick={backToPort}>Back to portfolio </button>
             </div>
         </div>
     );

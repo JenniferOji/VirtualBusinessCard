@@ -5,7 +5,28 @@
     background-color: #f4f4f4;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+}
+
+.template-button {
+    background-color: #3f44b6;
+    padding: 8px;
+    border-radius: 6px;
+    border-color: #ccc;
+    width: 100%;
+    color: white;
+    padding-left:60px;
+    padding-right: 60px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: large;
+}
+
+.template-button-holder {
+    margin: 0 auto;
+    max-width: 900px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 textarea {

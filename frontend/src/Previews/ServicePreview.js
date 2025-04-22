@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './ProfessionalPreview.css';
+import { useNavigate } from 'react-router-dom';
 
 const ServicePreview = () => {
     const { id } = useParams();
+    const navigate = useNavigate(); 
+    
     const [title, setTitle] = useState("");
     const [slogan, setSlogan] = useState("");
     const [image, setImage] = useState("/images/Logo-rm.png"); 
@@ -53,40 +56,50 @@ const ServicePreview = () => {
             });
     }, [id]);
 
+    // naviagting back the portfolio page
+    const backToPort = async (e) => {
+        e.preventDefault(); 
+        navigate('/templates/service/' + id);
+    };
     return (
-        <div className="phoneContainer">
-            <div className="phoneView">
-                <h2>{title}</h2>
-                <p>{slogan}</p>
-                <hr />
-                <div className='image'>
-                    <img src={image} className='product-image'></img>
+        <div>
+            <div className="phoneContainer">
+                <div className="phoneView">
+                    <h2>{title}</h2>
+                    <p>{slogan}</p>
+                    <hr />
+                    <div className='image'>
+                        <img src={image} className='product-image'></img>
+                    </div>
+                    <p>{description}</p>
+                    <hr />
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li>{feature1}</li>
+                        <li>{feature2}</li>
+                        <li>{feature3}</li>
+                    </ul>
+                    <h3>Services</h3>
+                    <ul>
+                        <li>{service1}</li>
+                        <li>{service2}</li>
+                        <li>{service3}</li>
+                        <li>{service4}</li>
+                    </ul>
+                    <h3>Testimonials</h3>
+                    <div>
+                        <p>"{testimonialQuote1}" - <strong>{testimonialName1}:</strong> </p>
+                        <p> "{testimonialQuote2} - <strong>{testimonialName2}:</strong>"</p>
+                    </div>
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>{contact1}</li>
+                        <li>{contact2}</li>
+                    </ul>
                 </div>
-                <p>{description}</p>
-                <hr />
-                <h3>Key Features</h3>
-                <ul>
-                    <li>{feature1}</li>
-                    <li>{feature2}</li>
-                    <li>{feature3}</li>
-                </ul>
-                <h3>Services</h3>
-                <ul>
-                    <li>{service1}</li>
-                    <li>{service2}</li>
-                    <li>{service3}</li>
-                    <li>{service4}</li>
-                </ul>
-                <h3>Testimonials</h3>
-                <div>
-                    <p>"{testimonialQuote1}" - <strong>{testimonialName1}:</strong> </p>
-                    <p> "{testimonialQuote2} - <strong>{testimonialName2}:</strong>"</p>
-                </div>
-                <h3>Contact</h3>
-                <ul>
-                    <li>{contact1}</li>
-                    <li>{contact2}</li>
-                </ul>
+            </div>
+            <div className='portfolio-button'>
+                <button className='button' onClick={backToPort}>Back to portfolio </button>
             </div>
         </div>
     );

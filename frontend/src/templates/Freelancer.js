@@ -106,242 +106,249 @@ const Freelancer = () => {
         navigate('/freelance/portfolio/preview/' + id);
     }
 
-
+    const goToTemplates = async (e) => {
+        navigate('/templates/' + id);
+    }
     return (
-        <div className="containerForm">
-            <form onSubmit={handleSave}>
-                <h1 className='header'> Freelancer Portfolio </h1>
-                <br /><hr /><br />
-                <div className='form'>
-                    <h4>Personal Name</h4>
-                    <input 
-                        type="text" 
-                        value={name}
-                        // updating the value of email on input
-                        onChange={(e) => setName(e.target.value)} 
-                        required // making the field required so that the use cannot coniune without filling the field in
-                    />
-                </div>
-                <br />
-                <div className='form'>
-                    <h4>Personal Brand</h4>
-                    <textarea 
-                        rows="2" 
-                        type="text" 
-                        value={branding1}
-                        // updating the value of description on input
-                        onChange={(e) => setBranding1(e.target.value)} 
-                        required // mak
-                    >  
-                    </textarea>
-                </div>
-                <div className='form'>
-                    <textarea 
-                        rows="2" 
-                        type="text" 
-                        value={branding2}
-                        // updating the value of description on input
-                        onChange={(e) => setBranding2(e.target.value)} 
-                        required // mak
-                    >  
-                    </textarea>
-                </div> 
-                <br /> 
-                <div className='form'>
-                    <h4>About Me</h4>
-                    <textarea 
-                        rows="4" 
-                        type="text" 
-                        value={aboutMe}
-                        // updating the value of description on input
-                        onChange={(e) => setAboutMe(e.target.value)} 
-                        required // mak
-                    >  
-                    </textarea>
-                </div>
-                <br />
-                <div className='form'>
-                    <h4>Skills and tools</h4>
-                    <textarea 
-                        rows="2" 
-                        type="text" 
-                        value={skill1}
-                        // updating the value of description on input
-                        onChange={(e) => setSkill1(e.target.value)} 
-                        required // mak
-                    >  
-                    </textarea>
-                </div>
-                <div className='form'>
-                    <textarea 
-                        rows="2" 
-                        type="text" 
-                        value={skill2}
-                        // updating the value of description on input
-                        onChange={(e) => setSkill2(e.target.value)} 
-                        required // mak
-                    >  
-                    </textarea>
-                </div>
-                <div className='form'>
-                    <textarea 
-                        rows="2" 
-                        type="text" 
-                        value={skill3}
-                        // updating the value of description on input
-                        onChange={(e) => setSkill3(e.target.value)} 
-                        required // mak
-                    >  
-                    </textarea>
-                </div>
-                <br />
-                <div className='form'>
-                    <h4>Services Offered </h4>
-                    <textarea 
-                        rows="2" 
-                        type="text" 
-                        value={service1}
-                        // updating the value of description on input
-                        onChange={(e) => setService1(e.target.value)} 
-                        required // mak
-                    >  
-                    </textarea>
-                </div>
-                <div className='form'>
-                    <textarea 
-                        rows="2" 
-                        type="text" 
-                        value={service2}
-                        // updating the value of description on input
-                        onChange={(e) => setService2(e.target.value)} 
-                        required // mak
-                    >  
-                    </textarea>
-                </div>
-                <div className='form'>
-                    <textarea 
-                        rows="2" 
-                        type="text" 
-                        value={service3}
-                        // updating the value of description on input
-                        onChange={(e) => setService3(e.target.value)} 
-                        required // mak
-                    >  
-                    </textarea>
-                </div>
-                <br />
-                <div className='form'>
-                    <h4>Featured projects</h4>
-                    <h5>Project 1</h5>
-                    <textarea 
-                        rows="2" 
-                        type="text" 
-                        value={projectName1}
-                        // updating the value of description on input
-                        onChange={(e) => setProjectName1(e.target.value)} 
-                        required // mak
-                    >  
-                    </textarea>
-                </div>
-                <div className='form'>
-                    <textarea 
-                         rows="2" 
-                        type="text" 
-                        value={projectDescription1}
-                        // updating the value of description on input
-                        onChange={(e) => setProjectDescription1(e.target.value)} 
-                        required // mak
-                        >  
-                    </textarea>
-                </div>
-                <div className='form'>
-                    <textarea 
-                         rows="2" 
-                        type="text" 
-                        value={projectLink1}
-                        // updating the value of description on input
-                        onChange={(e) => setProjectLink1(e.target.value)} 
-                        required // mak
-                        >  
-                    </textarea>
-                </div>
-                <br />
-                <div className='form'>
-                    <h5>Project 2</h5>
-                    <textarea 
-                        rows="2" 
-                        type="text" 
-                        value={projectName2}
-                        // updating the value of description on input
-                        onChange={(e) => setProjectName2(e.target.value)} 
-                        required // mak
-                    >  
-                    </textarea>
-                </div>
-                <div className='form'>
-                    <textarea 
-                         rows="2" 
-                        type="text" 
-                        value={projectDescription2}
-                        // updating the value of description on input
-                        onChange={(e) => setProjectDescription2(e.target.value)} 
-                        required // mak
-                        >  
-                    </textarea>
-                </div>
-                <div className='form'>
-                    <textarea 
-                         rows="2" 
-                        type="text" 
-                        value={projectLink2}
-                        // updating the value of description on input
-                        onChange={(e) => setProjectLink2(e.target.value)} 
-                        required // mak
-                        >  
-                    </textarea>
-                </div>
-                <br />
-                <br />
-                <div className='form'>
-                    <h4>Enter your contacts</h4>
-                    <textarea 
-                        rows="2" 
-                        type="text" 
-                        value={contact1}
-                        // updating the value of description on input
-                        onChange={(e) => setContact1(e.target.value)} 
-                        required // mak
-                    >  
-                    </textarea>
-                </div>
-                <div className='form'>
-                    <textarea 
-                        rows="2" 
-                        type="text" 
-                        value={contact2}
-                        // updating the value of description on input
-                        onChange={(e) => setContact2(e.target.value)} 
-                        required // mak
-                    >  
-                    </textarea>
-                </div>
-                <div className='form-buttons'>
-                    <button className="save" type="submit">Save</button>
-                    <button onClick={loadPreview} className='preview'>Preview </button>
-                </div>
-                <div className='submit-button'>
-                    <button onClick={handldeFormSubmit} className='submit'>Submit </button>
-                </div>
-                {/* https://www.dhiwise.com/post/guide-to-creating-engaging-user-experiences-with-react-popups */}
-                {isOpen && (
-                    <div className="popup">
-                        <QrCodeGenerator type={type} id={id}></QrCodeGenerator>
-                        <div className='pop-but-container'>
-                            <button onClick={togglePopup} className='close-button'>Close</button>
-                        </div>
+        <div >
+            <div className='template-button-holder'>
+                <button className='template-button' onClick={goToTemplates}>Browse templates</button>
+            </div>
+            <div className="containerForm">
+                <form onSubmit={handleSave}>
+                    <h1 className='header'> Freelancer Portfolio </h1>
+                    <br /><hr /><br />
+                    <div className='form'>
+                        <h4>Personal Name</h4>
+                        <input 
+                            type="text" 
+                            value={name}
+                            // updating the value of email on input
+                            onChange={(e) => setName(e.target.value)} 
+                            required // making the field required so that the use cannot coniune without filling the field in
+                        />
                     </div>
-                )}
-            </form>
+                    <br />
+                    <div className='form'>
+                        <h4>Personal Brand</h4>
+                        <textarea 
+                            rows="2" 
+                            type="text" 
+                            value={branding1}
+                            // updating the value of description on input
+                            onChange={(e) => setBranding1(e.target.value)} 
+                            required // mak
+                        >  
+                        </textarea>
+                    </div>
+                    <div className='form'>
+                        <textarea 
+                            rows="2" 
+                            type="text" 
+                            value={branding2}
+                            // updating the value of description on input
+                            onChange={(e) => setBranding2(e.target.value)} 
+                            required // mak
+                        >  
+                        </textarea>
+                    </div> 
+                    <br /> 
+                    <div className='form'>
+                        <h4>About Me</h4>
+                        <textarea 
+                            rows="4" 
+                            type="text" 
+                            value={aboutMe}
+                            // updating the value of description on input
+                            onChange={(e) => setAboutMe(e.target.value)} 
+                            required // mak
+                        >  
+                        </textarea>
+                    </div>
+                    <br />
+                    <div className='form'>
+                        <h4>Skills and tools</h4>
+                        <textarea 
+                            rows="2" 
+                            type="text" 
+                            value={skill1}
+                            // updating the value of description on input
+                            onChange={(e) => setSkill1(e.target.value)} 
+                            required // mak
+                        >  
+                        </textarea>
+                    </div>
+                    <div className='form'>
+                        <textarea 
+                            rows="2" 
+                            type="text" 
+                            value={skill2}
+                            // updating the value of description on input
+                            onChange={(e) => setSkill2(e.target.value)} 
+                            required // mak
+                        >  
+                        </textarea>
+                    </div>
+                    <div className='form'>
+                        <textarea 
+                            rows="2" 
+                            type="text" 
+                            value={skill3}
+                            // updating the value of description on input
+                            onChange={(e) => setSkill3(e.target.value)} 
+                            required // mak
+                        >  
+                        </textarea>
+                    </div>
+                    <br />
+                    <div className='form'>
+                        <h4>Services Offered </h4>
+                        <textarea 
+                            rows="2" 
+                            type="text" 
+                            value={service1}
+                            // updating the value of description on input
+                            onChange={(e) => setService1(e.target.value)} 
+                            required // mak
+                        >  
+                        </textarea>
+                    </div>
+                    <div className='form'>
+                        <textarea 
+                            rows="2" 
+                            type="text" 
+                            value={service2}
+                            // updating the value of description on input
+                            onChange={(e) => setService2(e.target.value)} 
+                            required // mak
+                        >  
+                        </textarea>
+                    </div>
+                    <div className='form'>
+                        <textarea 
+                            rows="2" 
+                            type="text" 
+                            value={service3}
+                            // updating the value of description on input
+                            onChange={(e) => setService3(e.target.value)} 
+                            required // mak
+                        >  
+                        </textarea>
+                    </div>
+                    <br />
+                    <div className='form'>
+                        <h4>Featured projects</h4>
+                        <h5>Project 1</h5>
+                        <textarea 
+                            rows="2" 
+                            type="text" 
+                            value={projectName1}
+                            // updating the value of description on input
+                            onChange={(e) => setProjectName1(e.target.value)} 
+                            required // mak
+                        >  
+                        </textarea>
+                    </div>
+                    <div className='form'>
+                        <textarea 
+                            rows="2" 
+                            type="text" 
+                            value={projectDescription1}
+                            // updating the value of description on input
+                            onChange={(e) => setProjectDescription1(e.target.value)} 
+                            required // mak
+                            >  
+                        </textarea>
+                    </div>
+                    <div className='form'>
+                        <textarea 
+                            rows="2" 
+                            type="text" 
+                            value={projectLink1}
+                            // updating the value of description on input
+                            onChange={(e) => setProjectLink1(e.target.value)} 
+                            required // mak
+                            >  
+                        </textarea>
+                    </div>
+                    <br />
+                    <div className='form'>
+                        <h5>Project 2</h5>
+                        <textarea 
+                            rows="2" 
+                            type="text" 
+                            value={projectName2}
+                            // updating the value of description on input
+                            onChange={(e) => setProjectName2(e.target.value)} 
+                            required // mak
+                        >  
+                        </textarea>
+                    </div>
+                    <div className='form'>
+                        <textarea 
+                            rows="2" 
+                            type="text" 
+                            value={projectDescription2}
+                            // updating the value of description on input
+                            onChange={(e) => setProjectDescription2(e.target.value)} 
+                            required // mak
+                            >  
+                        </textarea>
+                    </div>
+                    <div className='form'>
+                        <textarea 
+                            rows="2" 
+                            type="text" 
+                            value={projectLink2}
+                            // updating the value of description on input
+                            onChange={(e) => setProjectLink2(e.target.value)} 
+                            required // mak
+                            >  
+                        </textarea>
+                    </div>
+                    <br />
+                    <br />
+                    <div className='form'>
+                        <h4>Enter your contacts</h4>
+                        <textarea 
+                            rows="2" 
+                            type="text" 
+                            value={contact1}
+                            // updating the value of description on input
+                            onChange={(e) => setContact1(e.target.value)} 
+                            required // mak
+                        >  
+                        </textarea>
+                    </div>
+                    <div className='form'>
+                        <textarea 
+                            rows="2" 
+                            type="text" 
+                            value={contact2}
+                            // updating the value of description on input
+                            onChange={(e) => setContact2(e.target.value)} 
+                            required // mak
+                        >  
+                        </textarea>
+                    </div>
+                    <div className='form-buttons'>
+                        <button className="save" type="submit">Save</button>
+                        <button onClick={loadPreview} className='preview'>Preview </button>
+                    </div>
+                    <div className='submit-button'>
+                        <button onClick={handldeFormSubmit} className='submit'>Submit </button>
+                    </div>
+                    {/* https://www.dhiwise.com/post/guide-to-creating-engaging-user-experiences-with-react-popups */}
+                    {isOpen && (
+                        <div className="popup">
+                            <QrCodeGenerator type={type} id={id}></QrCodeGenerator>
+                            <div className='pop-but-container'>
+                                <button onClick={togglePopup} className='close-button'>Close</button>
+                            </div>
+                        </div>
+                    )}
+                </form>
+            </div>
         </div>
     );
 }

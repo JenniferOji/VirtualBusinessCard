@@ -19,7 +19,7 @@ const Navigation = () => {
                 {/* the routes present on the navigation bar */}
               <Nav.Link href="/SignUp">Sign Up</Nav.Link>
               <Nav.Link href="/Login">Log in</Nav.Link>
-              <img src="/images/back.png" alt="back" width={35} onClick={goBack}></img>
+              {/* <img src="/images/back.png" alt="back" width={35} onClick={goBack}></img> */}
             </Nav>
           </Container>
       </Navbar>
