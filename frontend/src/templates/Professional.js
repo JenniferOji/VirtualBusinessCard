@@ -24,7 +24,7 @@ const Professional = () => {
     const [feature1, setFeature1] = useState("Enter feature");
     const [feature2, setFeature2] = useState("Enter feature");
     const [feature3, setFeature3] = useState("Enter feature");
-    const [contact1, setContact1] = useState("");
+    const [contact1, setContact1] = useState("Email: ");
     const [contact2, setContact2] = useState("Phone: ");
 
     const[type] = useState("professional");

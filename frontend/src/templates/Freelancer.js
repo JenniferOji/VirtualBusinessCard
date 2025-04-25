@@ -20,23 +20,23 @@ const Freelancer = () => {
     const navigate = useNavigate();
 
     const [name, setName] = useState("Enter your name");
-    const [branding1, setBranding1] = useState("Creative Developer");
-    const [branding2, setBranding2] = useState("UX Specicialist");
-    const [aboutMe, setAboutMe] = useState("I am a ...");
-    const [skill1, setSkill1] = useState("HTML");
-    const [skill2, setSkill2] = useState("Adobe");
-    const [skill3, setSkill3] = useState("React.Js");
-    const [service1, setService1] = useState("Website and app UX/ UI");
-    const [service2, setService2] = useState("Frontend web dev");
-    const [service3, setService3] = useState("Branding and visual identity");
-    const [projectName1, setProjectName1] = useState("Enter project name");
-    const [projectDescription1, setProjectDescription1] = useState("Enter project description");
-    const [projectLink1, setProjectLink1] = useState("Enter project name");
-    const [projectName2, setProjectName2] = useState("Enter project name");
-    const [projectDescription2, setProjectDescription2] = useState("Enter project description");
-    const [projectLink2, setProjectLink2] = useState("Enter project link");
-    const [contact1, setContact1] = useState("Email:");
-    const [contact2, setContact2] = useState("Phone: ");
+    const [branding1, setBranding1] = useState("Enter your primary tag");
+    const [branding2, setBranding2] = useState("Enter your secondary tag");
+    const [aboutMe, setAboutMe] = useState("Enter your bio");
+    const [skill1, setSkill1] = useState("Enter skill 1");
+    const [skill2, setSkill2] = useState("Enter skill 2");
+    const [skill3, setSkill3] = useState("Enter skill 3");
+    const [service1, setService1] = useState("Enter service 1");
+    const [service2, setService2] = useState("Enter service 2");
+    const [service3, setService3] = useState("Enter service 3");
+    const [projectName1, setProjectName1] = useState("Enter project 1 name");
+    const [projectDescription1, setProjectDescription1] = useState("Enter project 1 description");
+    const [projectLink1, setProjectLink1] = useState("Enter project 1 link");
+    const [projectName2, setProjectName2] = useState("Enter project 2 name");
+    const [projectDescription2, setProjectDescription2] = useState("Enter project 2 description");
+    const [projectLink2, setProjectLink2] = useState("Enter project 2 link");
+    const [contact1, setContact1] = useState("Enter email");
+    const [contact2, setContact2] = useState("Enter phone");
 
     //displaying the users profile when the page is loaded based on their user id 
     useEffect(() => {

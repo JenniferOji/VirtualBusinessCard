@@ -17,8 +17,8 @@ const Navigation = () => {
             <Navbar.Brand href="/" >Virtual Business Card</Navbar.Brand>
             <Nav className="me-auto">
                 {/* the routes present on the navigation bar */}
-              <Nav.Link href="/SignUp">Sign Up</Nav.Link>
-              <Nav.Link href="/Login">Log in</Nav.Link>
+              <Nav.Link href="/SignUp">SignUp</Nav.Link>
+              <Nav.Link href="/Login">Login</Nav.Link>
               {/* <img src="/images/back.png" alt="back" width={35} onClick={goBack}></img> */}
             </Nav>
           </Container>

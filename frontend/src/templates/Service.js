@@ -24,19 +24,19 @@ const Service = () => {
     const [slogan, setSlogan] = useState("Enter slogan");
     const [image, setImage] = useState("");
     const [description, setDescription] = useState("Enter description");
-    const [service1, setService1] = useState("Website and app UX/ UI");
-    const [service2, setService2] = useState("Frontend web dev");
-    const [service3, setService3] = useState("Branding and visual identity");
-    const [service4, setService4] = useState("Branding and visual identity");
-    const [feature1, setFeature1] = useState("Enter feature");
-    const [feature2, setFeature2] = useState("Enter feature");
-    const [feature3, setFeature3] = useState("Enter feature");
-    const [testimonialQuote1, setTestimonialQuote1] = useState("Enter project name");
-    const [testimonialName1, setTestimonialName1] = useState("Enter project description");
-    const [testimonialQuote2, setTestimonialQuote2] = useState("Enter project name");
-    const [testimonialName2, setTestimonialName2] = useState("Enter project description");
-    const [contact1, setContact1] = useState("Email: ");
-    const [contact2, setContact2] = useState("Phone: ");
+    const [service1, setService1] = useState("Enter service 1");
+    const [service2, setService2] = useState("Enter service 2");
+    const [service3, setService3] = useState("Enter service 3");
+    const [service4, setService4] = useState("Enter service 4");
+    const [feature1, setFeature1] = useState("Enter feature 1");
+    const [feature2, setFeature2] = useState("Enter feature 2");
+    const [feature3, setFeature3] = useState("Enter feature 3");
+    const [testimonialQuote1, setTestimonialQuote1] = useState("Enter testimonial 1 quote");
+    const [testimonialName1, setTestimonialName1] = useState("Enter testimonial 1 name");
+    const [testimonialQuote2, setTestimonialQuote2] = useState("Enter testimonial 2 quote");
+    const [testimonialName2, setTestimonialName2] = useState("Enter testimonial 2 name");
+    const [contact1, setContact1] = useState("Enter email");
+    const [contact2, setContact2] = useState("Enter phone");
 
     // displaying the users profile when the page is loaded based on their user id 
     useEffect(() => {
@@ -56,10 +56,10 @@ const Service = () => {
                 setFeature2(response.data.service.feature2);
                 setFeature3(response.data.service.feature3);
                 
-                setTestimonialQuote1(response.data.service.service1);
-                setTestimonialName1(response.data.service.service2);
-                setTestimonialQuote2(response.data.service.service1);
-                setTestimonialName2(response.data.service.service2);
+                setTestimonialQuote1(response.data.service.testimonialQuote1);
+                setTestimonialName1(response.data.service.testimonialName1);
+                setTestimonialQuote2(response.data.service.testimonialQuote2);
+                setTestimonialName2(response.data.service.setTestimonialName2);
                 
                 setContact1(response.data.service.contact1);
                 setContact2(response.data.service.contact2);

@@ -32,6 +32,10 @@ body {
 .card-content {
     flex: 1; 
     padding-right: 20px; 
+    display: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .card img {
@@ -40,7 +44,7 @@ body {
 }
 
 .button {
-    width: 70%; 
+    width: 200px !important;
     padding: 10px; 
     border-radius: 5px;
     cursor: pointer;

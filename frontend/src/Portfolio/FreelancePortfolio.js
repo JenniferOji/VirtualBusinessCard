@@ -75,9 +75,9 @@ const FreelancePortfolio = () => {
             </ul>
             <h3>Projects</h3>
             <ol>
-                <li>{projectName1}: {projectDescription1} </li>
+                <li><strong>{projectName1}:</strong> {projectDescription1} </li>
                 <p><a href={projectLink1}>{projectLink1}</a></p>
-                <li>{projectName2}: {projectDescription2}</li>
+                <li><strong>{projectName2}:</strong> {projectDescription2}</li>
                 <p><a href={projectLink2}>{projectLink2}</a></p>
             </ol>
             <h3>Contact</h3>

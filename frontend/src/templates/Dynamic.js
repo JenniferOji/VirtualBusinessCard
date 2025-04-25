@@ -105,13 +105,12 @@ const Dynamic = () => {
     }
     return (
         <div className="App">
+            {/* <button onClick={look}>Preview</button> */}
             <div className='template-button-holder'>
                     <button className='template-button' onClick={goToTemplates}>Browse templates</button>
                 </div>
-            {/* <button onClick={look}>Preview</button> */}
             <div id="editor"></div>
             <div>
-        
                 <div className='submit-container'>
                     <div className='submit-button'>
                         <button onClick={handleSubmit} className='submit'>Submit </button>

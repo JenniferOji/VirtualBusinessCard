@@ -37,7 +37,7 @@ const Templates = () => {
                     <div className="card">
                         <div className="card-content">
                             <h3>Product</h3>
-                            <p>Sleek and modern.</p>
+                            <p>Show off a product with key features and a bold call to action.</p>
                         </div>
                         <img src="/images/product2.png" alt="Template1" />
                         <button className="button" onClick={renderProfessionalTemplate}>Use this template</button> 
@@ -47,7 +47,7 @@ const Templates = () => {
                     <div className="card">
                         <div className="card-content">
                             <h3>Freelancer</h3>
-                            <p>Bold and colorful.</p>
+                            <p>Highlight your skills, services, and past work to attract clients.</p>
                         </div>
                         <img src="/images/freelance2.png" alt="Template1" />
                         <button className="button" onClick={renderFreelancerTemplate}>Use this template</button> 
@@ -57,7 +57,7 @@ const Templates = () => {
                     <div className="card">
                         <div className="card-content">
                             <h3>Service</h3>
-                            <p>Clean and simple.</p>
+                            <p>Promote a service you offer, with clear descriptions and benefits.</p>
                         </div>
                         <img src="/images/service.png" alt="Template1" />
                         <button className="button" onClick={renderServiceTemplate}>Use this template</button> 
@@ -67,7 +67,7 @@ const Templates = () => {
                     <div className="card">
                         <div className="card-content">
                             <h3>Dynamic</h3>
-                            <p>Create your own</p>
+                            <p>Build your own layout from scratch - fully customizable.</p>
                         </div>
                         <img src="/images/dynamic2.png" alt="Template1"/>
                         <button className="button" onClick={renderDynamicTemplate}>Use this template</button> 

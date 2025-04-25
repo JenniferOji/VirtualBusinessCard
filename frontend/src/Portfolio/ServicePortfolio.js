@@ -40,10 +40,10 @@ const ServicePortfolio = () => {
                 setFeature2(response.data.service.feature2);
                 setFeature3(response.data.service.feature3);
                 
-                setTestimonialQuote1(response.data.service.service1);
-                setTestimonialName1(response.data.service.service2);
-                setTestimonialQuote2(response.data.service.service1);
-                setTestimonialName2(response.data.service.service2);
+                setTestimonialQuote1(response.data.service.testimonialQuote1);
+                setTestimonialName1(response.data.service.testimonialName1);
+                setTestimonialQuote2(response.data.service.testimonialQuote2);
+                setTestimonialName2(response.data.service.setTestimonialName2);
                 
                 setContact1(response.data.service.contact1);
                 setContact2(response.data.service.contact2);
@@ -61,6 +61,7 @@ const ServicePortfolio = () => {
             <div className='image'>
                 <img src={image} className='product-image'></img>
             </div>
+            <br />
             <p>{description}</p>
             <hr />
             <h3>Key Features</h3>

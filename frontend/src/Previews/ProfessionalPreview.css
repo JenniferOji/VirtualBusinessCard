@@ -42,5 +42,6 @@
 .button {
     background-color: #3f44b6;
     border-radius: 5px;
-    width: 300px;
+    max-width: 300px;
+    
 }

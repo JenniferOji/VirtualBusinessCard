@@ -37,10 +37,16 @@
     justify-content: center; 
     align-items: center; 
     margin-top: 10px;
+    width: 300px;
 }
 
 .button {
     background-color: #3f44b6;
     border-radius: 5px;
-    width: 300px;
+    width: 100%;
+}
+
+
+.button:hover {
+    background-color: darkblue;
 }
