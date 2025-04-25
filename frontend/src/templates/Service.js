@@ -20,54 +20,61 @@ const Service = () => {
 
     const navigate = useNavigate();
 
-    const [title, setTitle] = useState("Enter business name");
-    const [slogan, setSlogan] = useState("Enter slogan");
+    // variables fro the user to enter when filling in the form 
+    const [title, setTitle] = useState("");
+    const [slogan, setSlogan] = useState("");
     const [image, setImage] = useState("");
-    const [description, setDescription] = useState("Enter description");
-    const [service1, setService1] = useState("Enter service 1");
-    const [service2, setService2] = useState("Enter service 2");
-    const [service3, setService3] = useState("Enter service 3");
-    const [service4, setService4] = useState("Enter service 4");
-    const [feature1, setFeature1] = useState("Enter feature 1");
-    const [feature2, setFeature2] = useState("Enter feature 2");
-    const [feature3, setFeature3] = useState("Enter feature 3");
-    const [testimonialQuote1, setTestimonialQuote1] = useState("Enter testimonial 1 quote");
-    const [testimonialName1, setTestimonialName1] = useState("Enter testimonial 1 name");
-    const [testimonialQuote2, setTestimonialQuote2] = useState("Enter testimonial 2 quote");
-    const [testimonialName2, setTestimonialName2] = useState("Enter testimonial 2 name");
-    const [contact1, setContact1] = useState("Enter email");
-    const [contact2, setContact2] = useState("Enter phone");
+    const [description, setDescription] = useState("");
+    
+    const [service1, setService1] = useState("");
+    const [service2, setService2] = useState("");
+    const [service3, setService3] = useState("");
+    const [service4, setService4] = useState("");
+    
+    const [feature1, setFeature1] = useState("");
+    const [feature2, setFeature2] = useState("");
+    const [feature3, setFeature3] = useState("");
+    
+    const [testimonialQuote1, setTestimonialQuote1] = useState("");
+    const [testimonialName1, setTestimonialName1] = useState("");
+    const [testimonialQuote2, setTestimonialQuote2] = useState("");
+    const [testimonialName2, setTestimonialName2] = useState("");
+    
+    const [contact1, setContact1] = useState("");
+    const [contact2, setContact2] = useState("");
+    
 
     // displaying the users profile when the page is loaded based on their user id 
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/templates/service/${id}`)
             .then((response) => {
-                setTitle(response.data.service.title);
-                setSlogan(response.data.service.slogan);
-                setImage(response.data.service.image);
-                setDescription(response.data.service.description);
+                setTitle(response.data.service.title || "Enter business name");
+                setSlogan(response.data.service.slogan || "Enter slogan");
+                setImage(response.data.service.image || "");
+                setDescription(response.data.service.description || "Enter description");
                 
-                setService1(response.data.service.service1);
-                setService2(response.data.service.service2);
-                setService3(response.data.service.service3);
-                setService4(response.data.service.service3);
-
-                setFeature1(response.data.service.feature1);
-                setFeature2(response.data.service.feature2);
-                setFeature3(response.data.service.feature3);
+                setService1(response.data.service.service1 || "Enter service 1");
+                setService2(response.data.service.service2 || "Enter service 2");
+                setService3(response.data.service.service3 || "Enter service 3");
+                setService4(response.data.service.service4 || "Enter service 4");
+    
+                setFeature1(response.data.service.feature1 || "Enter feature 1");
+                setFeature2(response.data.service.feature2 || "Enter feature 2");
+                setFeature3(response.data.service.feature3 || "Enter feature 3");
                 
-                setTestimonialQuote1(response.data.service.testimonialQuote1);
-                setTestimonialName1(response.data.service.testimonialName1);
-                setTestimonialQuote2(response.data.service.testimonialQuote2);
-                setTestimonialName2(response.data.service.setTestimonialName2);
+                setTestimonialQuote1(response.data.service.testimonialQuote1 || "Enter testimonial 1 quote");
+                setTestimonialName1(response.data.service.testimonialName1 || "Enter testimonial 1 name");
+                setTestimonialQuote2(response.data.service.testimonialQuote2 || "Enter testimonial 2 quote");
+                setTestimonialName2(response.data.service.testimonialName2 || "Enter testimonial 2 name");
                 
-                setContact1(response.data.service.contact1);
-                setContact2(response.data.service.contact2);
+                setContact1(response.data.service.contact1 || "Enter email");
+                setContact2(response.data.service.contact2 || "Enter phone");
             })
             .catch((error) => {
-            console.log("Error", error);
+                console.log("Error", error);
             });
     }, [id]);
+    
 
     // updating the users profile on submit
     const handleSave = async (e) => {

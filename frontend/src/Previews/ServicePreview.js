@@ -46,7 +46,7 @@ const ServicePreview = () => {
                 setTestimonialQuote1(response.data.service.testimonialQuote1);
                 setTestimonialName1(response.data.service.testimonialName1);
                 setTestimonialQuote2(response.data.service.testimonialQuote2);
-                setTestimonialName2(response.data.service.setTestimonialName2);
+                setTestimonialName2(response.data.service.testimonialName2);
                 
                 setContact1(response.data.service.contact1);
                 setContact2(response.data.service.contact2);
@@ -73,12 +73,6 @@ const ServicePreview = () => {
                     </div>
                     <p>{description}</p>
                     <hr />
-                    <h3>Key Features</h3>
-                    <ul>
-                        <li>{feature1}</li>
-                        <li>{feature2}</li>
-                        <li>{feature3}</li>
-                    </ul>
                     <h3>Services</h3>
                     <ul>
                         <li>{service1}</li>
@@ -86,10 +80,17 @@ const ServicePreview = () => {
                         <li>{service3}</li>
                         <li>{service4}</li>
                     </ul>
+                    <h3>Why choose Us</h3>
+                    <ul>
+                        <li>{feature1}</li>
+                        <li>{feature2}</li>
+                        <li>{feature3}</li>
+                    </ul>
+                    <hr />
                     <h3>Testimonials</h3>
                     <div>
-                        <p>"{testimonialQuote1}" - <strong>{testimonialName1}:</strong> </p>
-                        <p> "{testimonialQuote2} - <strong>{testimonialName2}:</strong>"</p>
+                        <p>"{testimonialQuote1}" - <strong>{testimonialName1}</strong> </p>
+                        <p>"{testimonialQuote2}" - <strong>{testimonialName2}</strong></p>
                     </div>
                     <h3>Contact</h3>
                     <ul>

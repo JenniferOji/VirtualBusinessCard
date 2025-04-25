@@ -16,16 +16,16 @@ const Professional = () => {
     };
 
     // default states if the user does not have a professional profile created yet
-    const [title, setTitle] = useState("Enter business name");
-    const [slogan, setSlogan] = useState("Enter slogan");
-    const [product, setProduct] = useState("Enter product name");
+    const [title, setTitle] = useState("");
+    const [slogan, setSlogan] = useState("");
+    const [product, setProduct] = useState("");
     const [image, setImage] = useState("");
-    const [description, setDescription] = useState("Enter description");
-    const [feature1, setFeature1] = useState("Enter feature");
-    const [feature2, setFeature2] = useState("Enter feature");
-    const [feature3, setFeature3] = useState("Enter feature");
-    const [contact1, setContact1] = useState("Email: ");
-    const [contact2, setContact2] = useState("Phone: ");
+    const [description, setDescription] = useState("");
+    const [feature1, setFeature1] = useState("");
+    const [feature2, setFeature2] = useState("");
+    const [feature3, setFeature3] = useState("");
+    const [contact1, setContact1] = useState("");
+    const [contact2, setContact2] = useState("");
 
     const[type] = useState("professional");
 
@@ -35,15 +35,15 @@ const Professional = () => {
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/templates/professional/${id}`)
             .then((response) => {
-                setTitle(response.data.profile.title);
-                setSlogan(response.data.profile.slogan);
-                setProduct(response.data.profile.product);
-                setDescription(response.data.profile.description);
-                setFeature1(response.data.profile.feature1);
-                setFeature2(response.data.profile.feature2);
-                setFeature3(response.data.profile.feature3);
-                setContact1(response.data.profile.contact1);
-                setContact2(response.data.profile.contact2);
+                setTitle(response.data.profile.title || "Enter business name");
+                setSlogan(response.data.profile.slogan || "Enter slogan");
+                setProduct(response.data.profile.product || "Enter product name");
+                setDescription(response.data.profile.description || "Enter product description");
+                setFeature1(response.data.profile.feature1 || "Enter feature 1");
+                setFeature2(response.data.profile.feature2 || "Enter feature 2");
+                setFeature3(response.data.profile.feature3 || "Enter feature 3");
+                setContact1(response.data.profile.contact1 || "Email: ");
+                setContact2(response.data.profile.contact2 || "Phone: ");
                 setImage(response.data.profile.image);
             })
             .catch((error) => {

@@ -19,47 +19,48 @@ const Freelancer = () => {
 
     const navigate = useNavigate();
 
-    const [name, setName] = useState("Enter your name");
-    const [branding1, setBranding1] = useState("Enter your primary tag");
-    const [branding2, setBranding2] = useState("Enter your secondary tag");
-    const [aboutMe, setAboutMe] = useState("Enter your bio");
-    const [skill1, setSkill1] = useState("Enter skill 1");
-    const [skill2, setSkill2] = useState("Enter skill 2");
-    const [skill3, setSkill3] = useState("Enter skill 3");
-    const [service1, setService1] = useState("Enter service 1");
-    const [service2, setService2] = useState("Enter service 2");
-    const [service3, setService3] = useState("Enter service 3");
-    const [projectName1, setProjectName1] = useState("Enter project 1 name");
-    const [projectDescription1, setProjectDescription1] = useState("Enter project 1 description");
-    const [projectLink1, setProjectLink1] = useState("Enter project 1 link");
-    const [projectName2, setProjectName2] = useState("Enter project 2 name");
-    const [projectDescription2, setProjectDescription2] = useState("Enter project 2 description");
-    const [projectLink2, setProjectLink2] = useState("Enter project 2 link");
-    const [contact1, setContact1] = useState("Enter email");
-    const [contact2, setContact2] = useState("Enter phone");
+    const [name, setName] = useState("");
+    const [branding1, setBranding1] = useState("");
+    const [branding2, setBranding2] = useState("");
+    const [aboutMe, setAboutMe] = useState("");
+    const [skill1, setSkill1] = useState("");
+    const [skill2, setSkill2] = useState("");
+    const [skill3, setSkill3] = useState("");
+    const [service1, setService1] = useState("");
+    const [service2, setService2] = useState("");
+    const [service3, setService3] = useState("");
+    const [projectName1, setProjectName1] = useState("");
+    const [projectDescription1, setProjectDescription1] = useState("");
+    const [projectLink1, setProjectLink1] = useState("");
+    const [projectName2, setProjectName2] = useState("");
+    const [projectDescription2, setProjectDescription2] = useState("");
+    const [projectLink2, setProjectLink2] = useState("");
+    const [contact1, setContact1] = useState("");
+    const [contact2, setContact2] = useState("");
+    
 
     //displaying the users profile when the page is loaded based on their user id 
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/templates/freelance/${id}`)
             .then((response) => {
-                setName(response.data.freelance.name);
-                setBranding1(response.data.freelance.branding1);
-                setBranding2(response.data.freelance.branding2);
-                setAboutMe(response.data.freelance.aboutMe);
-                setSkill1(response.data.freelance.skill1);
-                setSkill2(response.data.freelance.skill2);
-                setSkill3(response.data.freelance.skill3);
-                setService1(response.data.freelance.service1);
-                setService2(response.data.freelance.service2);
-                setService3(response.data.freelance.service3);
-                setProjectName1(response.data.freelance.projectName1);
-                setProjectDescription1(response.data.freelance.projectDescription1);
-                setProjectLink1(response.data.freelance.projectLink1);
-                setProjectName2(response.data.freelance.projectName2);
-                setProjectDescription2(response.data.freelance.projectDescription2);
-                setProjectLink2(response.data.freelance.projectLink2);
-                setContact1(response.data.freelance.contact1);
-                setContact2(response.data.freelance.contact2);
+                setName(response.data.freelance.name || "Enter your name");
+                setBranding1(response.data.freelance.branding1 || "Enter your primary tag");
+                setBranding2(response.data.freelance.branding2 || "Enter your secondary tag");
+                setAboutMe(response.data.freelance.aboutMe || "Enter your bio");
+                setSkill1(response.data.freelance.skill1 || "Enter skill 1");
+                setSkill2(response.data.freelance.skill2 || "Enter skill 2");
+                setSkill3(response.data.freelance.skill3 || "Enter skill 3");
+                setService1(response.data.freelance.service1 || "Enter service 1");
+                setService2(response.data.freelance.service2 || "Enter service 2");
+                setService3(response.data.freelance.service3 || "Enter service 3");
+                setProjectName1(response.data.freelance.projectName1 || "Enter project 1 name");
+                setProjectDescription1(response.data.freelance.projectDescription1 || "Enter project 1 description");
+                setProjectLink1(response.data.freelance.projectLink1 || "Enter project 1 link");
+                setProjectName2(response.data.freelance.projectName2 || "Enter project 2 name");
+                setProjectDescription2(response.data.freelance.projectDescription2 || "Enter project 2 description");
+                setProjectLink2(response.data.freelance.projectLink2 || "Enter project 2 link");
+                setContact1(response.data.freelance.contact1 || "Enter email");
+                setContact2(response.data.freelance.contact2 || "Enter phone");
             })
             .catch((error) => {
                 console.log("Error", error);
